@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYO MATCHA — Printable Signs</title>
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=cormorant-garamond:300,400,500,600|noto-sans-jp:300,400,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --matcha-dark:    #7A8B6E;
+    --matcha-mid:     #8B9B7A;
+    --matcha-light:   #A8B89A;
+    --cream:          #F5F2EB;
+    --ink:            #3A3A3A;
+    --ink-soft:       #5A5A5A;
+    --ink-muted:      #888;
+    --red-alert:      #C45C5C;
+    --font-en:        'Cormorant Garamond', serif;
+    --font-jp:        'Noto Sans JP', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ddd;
+    font-family: var(--font-en);
+    color: var(--ink);
+  }
+
+  @media print {
+    body { background: white; }
+    .page-break { page-break-after: always; }
+    .screen-note { display: none; }
+  }
+
+  .screen-note {
+    text-align: center;
+    padding: 18px;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 0.04em;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* ── Sign base ───────────────────────────────────── */
+  .sign {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 30px auto;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    padding: 0.72in 0.82in 0.72in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+  }
+
+  /* ── Logo ────────────────────────────────────────── */
+  .logo {
+    text-align: center;
+    margin-bottom: 0.28in;
+    color: var(--matcha-dark);
+    flex-shrink: 0;
+  }
+  .logo-kyo {
+    display: block;
+    font-family: var(--font-en);
+    font-weight: 300;
+    font-size: 30pt;
+    letter-spacing: 0.38em;
+    line-height: 1;
+    text-indent: 0.38em;
+  }
+  .logo-matcha {
+    display: block;
+    font-family: var(--font-en);
+    font-weight: 300;
+    font-size: 9pt;
+    letter-spacing: 0.55em;
+    text-indent: 0.55em;
+    margin-top: 3px;
+  }
+
+  /* ── Divider ─────────────────────────────────────── */
+  .divider {
+    width: 100%;
+    border: none;
+    border-top: 0.6pt solid var(--matcha-dark);
+    opacity: 0.35;
+    margin: 0.1in 0;
+    flex-shrink: 0;
+  }
+
+  /* ── Headline block ──────────────────────────────── */
+  .headline {
+    text-align: center;
+    margin-bottom: 0.2in;
+    flex-shrink: 0;
+  }
+  .headline-en {
+    font-family: var(--font-en);
+    font-weight: 400;
+    font-size: 24pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .headline-jp {
+    font-family: var(--font-jp);
+    font-weight: 300;
+    font-size: 9pt;
+    color: var(--matcha-dark);
+    margin-top: 5px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Body text ───────────────────────────────────── */
+  .body-text {
+    font-family: var(--font-en);
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    text-align: center;
+    max-width: 5.8in;
+    letter-spacing: 0.02em;
+  }
+  .body-text-jp {
+    font-family: var(--font-jp);
+    font-weight: 300;
+    font-size: 8.5pt;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* ── 京 Badge ─────────────────────────────────────── */
+  .kyo-badge {
+    margin-top: auto;
+    padding-top: 0.22in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .kyo-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* ── Watercolor decoration ───────────────────────── */
+  .watercolor {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ━━ SIGN 1 — ALLERGEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .allergen-box {
+    border: 0.7pt solid var(--matcha-dark);
+    opacity: 0.9;
+    width: 100%;
+    max-width: 6in;
+    padding: 0.18in 0.22in 0.22in;
+    position: relative;
+    z-index: 1;
+  }
+  .allergen-box-title {
+    font-family: var(--font-en);
+    font-size: 10pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .allergen-box-title-jp {
+    font-family: var(--font-jp);
+    font-size: 7.5pt;
+    color: var(--matcha-dark);
+    text-align: center;
+    margin-bottom: 0.1in;
+    margin-top: 3px;
+  }
+  .allergen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.18in 0.12in;
+  }
+  .allergen-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .allergen-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--matcha-dark);
+  }
+  .allergen-label-en {
+    font-family: var(--font-en);
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-align: center;
+    font-weight: 400;
+  }
+  .allergen-label-jp {
+    font-family: var(--font-jp);
+    font-size: 7.5pt;
+    color: var(--matcha-dark);
+    text-align: center;
+  }
+
+  /* ━━ SIGN 2 — HANDWASHING ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .wash-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 5.8in;
+    position: relative;
+    z-index: 1;
+  }
+  .wash-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-bottom: 0.5pt solid;
+    border-color: rgba(168,184,154,0.5);
+    padding: 0.14in 0;
+  }
+  .wash-list li:last-child { border-bottom: none; }
+  .wash-item-en {
+    font-family: var(--font-en);
+    font-size: 13pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .wash-item-jp {
+    font-family: var(--font-jp);
+    font-size: 8pt;
+    color: var(--matcha-dark);
+    font-weight: 300;
+  }
+
+  /* ━━ SIGN 3 — CHOKING ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .choke-section-header {
+    font-family: var(--font-en);
+    font-size: 13pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 400;
+    text-align: center;
+    margin: 0.12in 0 0.04in;
+  }
+  .choke-section-jp {
+    font-family: var(--font-jp);
+    font-size: 8pt;
+    color: var(--matcha-dark);
+    text-align: center;
+    margin-bottom: 0.1in;
+  }
+  .choke-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.12in;
+    width: 100%;
+    max-width: 6.2in;
+  }
+  .choke-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+  }
+  .step-num {
+    font-family: var(--font-en);
+    font-size: 20pt;
+    color: var(--matcha-light);
+    font-weight: 300;
+    line-height: 1;
+  }
+  .step-en {
+    font-family: var(--font-en);
+    font-size: 8pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .step-jp {
+    font-family: var(--font-jp);
+    font-size: 6.5pt;
+    color: var(--matcha-dark);
+    line-height: 1.5;
+  }
+  .emergency-box {
+    background: var(--red-alert);
+    color: white;
+    padding: 0.14in 0.3in;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.15in;
+    margin-top: 0.14in;
+    width: 100%;
+    max-width: 5.5in;
+  }
+  .emergency-text-en {
+    font-family: var(--font-en);
+    font-size: 14pt;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .emergency-text-jp {
+    font-family: var(--font-jp);
+    font-size: 7.5pt;
+    font-weight: 300;
+    margin-top: 3px;
+    opacity: 0.9;
+  }
+
+  /* ━━ SIGN 4 — WIFI ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .wifi-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 4.8in;
+    position: relative;
+    z-index: 1;
+  }
+  .wifi-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-top: 0.5pt solid rgba(168,184,154,0.6);
+    padding-top: 0.18in;
+    margin-top: 0.18in;
+  }
+  .wifi-label {
+    font-family: var(--font-en);
+    font-size: 9pt;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--matcha-dark);
+    font-weight: 400;
+  }
+  .wifi-value {
+    font-family: var(--font-en);
+    font-size: 22pt;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  /* ━━ SIGN 5 — HOURS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .hours-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 5.2in;
+    position: relative;
+    z-index: 1;
+  }
+  .hours-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border-top: 0.5pt solid rgba(168,184,154,0.5);
+    padding-top: 0.22in;
+    margin-top: 0.22in;
+  }
+  .hours-row:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .hours-day-en {
+    font-family: var(--font-en);
+    font-size: 12pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--matcha-dark);
+    font-weight: 400;
+  }
+  .hours-day-jp {
+    font-family: var(--font-jp);
+    font-size: 8pt;
+    color: var(--matcha-mid);
+    margin-bottom: 4px;
+  }
+  .hours-time {
+    font-family: var(--font-en);
+    font-size: 32pt;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="screen-note">
+  🍵 <strong>KYO MATCHA</strong> — 5 Print-Ready Signs &nbsp;·&nbsp;
+  To print: <strong>File → Print → Select "Letter" paper, portrait, one page per sheet</strong>
+</div>
+
+
+<!-- ═══ SIGN 1 — ALLERGEN NOTICE ═══ -->
+<div class="sign page-break">
+
+  <svg class="watercolor" style="bottom:0;left:0;width:3.2in;height:2.2in;" viewBox="0 0 307 211" fill="none">
+    <ellipse cx="90" cy="185" rx="155" ry="72" fill="#8B9B7A" opacity="0.12" transform="rotate(-18 90 185)"/>
+    <ellipse cx="55" cy="175" rx="108" ry="52" fill="#7A8B6E" opacity="0.09" transform="rotate(-10 55 175)"/>
+    <ellipse cx="30" cy="198" rx="75" ry="34" fill="#A8B89A" opacity="0.17" transform="rotate(-5 30 198)"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="divider">
+
+  <div class="headline">
+    <div class="headline-en">Allergen Notice</div>
+    <div class="headline-jp">食物アレルギーのご案内</div>
+  </div>
+
+  <p class="body-text">Please inform our staff of any food allergies before placing your order.</p>
+  <p class="body-text-jp">ご注文前に食物アレルギーがございましたら、スタッフにお申し付けください。</p>
+  <p class="body-text-jp" style="margin-top:2px;">如果您对任何食物过敏，请在点单前告知我们的员工。</p>
+
+  <div style="height:0.2in;"></div>
+
+  <div class="allergen-box">
+    <div class="allergen-box-title">Our Products May Contain:</div>
+    <div class="allergen-box-title-jp">当店の商品には以下の原材料が含まれる場合があります</div>
+    <hr class="divider" style="margin-bottom:0.14in;">
+
+    <div class="allergen-grid">
+      <!-- Milk -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M18 10 L34 10 L38 20 L38 44 L14 44 L14 20 Z" stroke-linejoin="round"/>
+          <path d="M20 10 Q20 6 26 6 Q32 6 32 10"/>
+          <line x1="14" y1="22" x2="38" y2="22"/>
+          <ellipse cx="26" cy="33" rx="6" ry="7"/>
+        </svg>
+        <span class="allergen-label-en">Milk</span>
+        <span class="allergen-label-jp">乳製品</span>
+      </div>
+      <!-- Eggs -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.7">
+          <ellipse cx="26" cy="30" rx="12" ry="15"/>
+          <ellipse cx="26" cy="20" rx="7" ry="9"/>
+        </svg>
+        <span class="allergen-label-en">Eggs</span>
+        <span class="allergen-label-jp">卵</span>
+      </div>
+      <!-- Wheat -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6">
+          <line x1="26" y1="46" x2="26" y2="10"/>
+          <path d="M26 40 Q18 36 18 28 Q26 32 26 40Z"/>
+          <path d="M26 40 Q34 36 34 28 Q26 32 26 40Z"/>
+          <path d="M26 30 Q18 26 18 18 Q26 22 26 30Z"/>
+          <path d="M26 30 Q34 26 34 18 Q26 22 26 30Z"/>
+          <path d="M26 20 Q20 16 22 8 Q26 12 26 20Z"/>
+          <path d="M26 20 Q32 16 30 8 Q26 12 26 20Z"/>
+          <line x1="22" y1="46" x2="26" y2="40"/>
+          <line x1="30" y1="46" x2="26" y2="40"/>
+        </svg>
+        <span class="allergen-label-en">Wheat</span>
+        <span class="allergen-label-jp">小麦</span>
+      </div>
+      <!-- Soy -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="26" cy="26" r="14"/>
+          <ellipse cx="26" cy="26" rx="7" ry="11" transform="rotate(0 26 26)"/>
+          <ellipse cx="26" cy="26" rx="7" ry="11" transform="rotate(60 26 26)"/>
+          <ellipse cx="26" cy="26" rx="7" ry="11" transform="rotate(120 26 26)"/>
+        </svg>
+        <span class="allergen-label-en">Soy</span>
+        <span class="allergen-label-jp">大豆</span>
+      </div>
+      <!-- Peanuts -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.7">
+          <ellipse cx="18" cy="35" rx="10" ry="8"/>
+          <ellipse cx="34" cy="19" rx="10" ry="8"/>
+          <path d="M22 30 Q26 26 30 22" stroke-dasharray="2.5 2"/>
+          <line x1="26" y1="26" x2="26" y2="26" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="allergen-label-en">Peanuts</span>
+        <span class="allergen-label-jp">落花生</span>
+      </div>
+      <!-- Tree Nuts -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M26 8 Q14 20 14 32 Q14 44 26 44 Q38 44 38 32 Q38 20 26 8Z"/>
+          <line x1="26" y1="44" x2="26" y2="48"/>
+          <path d="M20 24 Q26 28 32 24"/>
+        </svg>
+        <span class="allergen-label-en">Tree Nuts</span>
+        <span class="allergen-label-jp">木の実</span>
+      </div>
+      <!-- Sesame -->
+      <div class="allergen-item">
+        <svg class="allergen-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.7">
+          <ellipse cx="26" cy="32" rx="7" ry="11"/>
+          <line x1="26" y1="21" x2="26" y2="12"/>
+          <ellipse cx="19" cy="17" rx="4" ry="6" transform="rotate(-35 19 17)"/>
+          <ellipse cx="33" cy="17" rx="4" ry="6" transform="rotate(35 33 17)"/>
+        </svg>
+        <span class="allergen-label-en">Sesame</span>
+        <span class="allergen-label-jp">ごま</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:0.16in;"></div>
+  <p class="body-text" style="font-size:9.5pt;letter-spacing:0.12em;">THANK YOU FOR YOUR UNDERSTANDING.</p>
+  <p class="body-text-jp">ご理解とご協力をお願いいたします。</p>
+
+  <div class="kyo-badge">
+    <svg class="kyo-circle" viewBox="0 0 50 50" fill="none">
+      <circle cx="25" cy="25" r="22" stroke="#7A8B6E" stroke-width="1.3" opacity="0.65"/>
+      <text x="25" y="32" font-family="'Noto Sans JP',sans-serif" font-size="20" fill="#7A8B6E" text-anchor="middle" font-weight="400">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ═══ SIGN 2 — EMPLOYEES MUST WASH HANDS ═══ -->
+<div class="sign page-break">
+
+  <svg class="watercolor" style="bottom:0;left:0;width:100%;height:2.5in;" viewBox="0 0 816 240" fill="none">
+    <ellipse cx="408" cy="225" rx="520" ry="82" fill="#8B9B7A" opacity="0.10"/>
+    <ellipse cx="350" cy="232" rx="360" ry="58" fill="#7A8B6E" opacity="0.08"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="divider">
+
+  <div class="headline" style="margin-bottom:0.08in;">
+    <div class="headline-en" style="font-size:27pt;line-height:1.12;">Employees Must<br>Wash Hands</div>
+    <div class="headline-jp" style="margin-top:7px;">従業員は手を洗わなければなりません</div>
+  </div>
+
+  <!-- Hands SVG illustration -->
+  <div style="margin:0.22in 0;color:var(--matcha-dark);position:relative;z-index:1;">
+    <svg width="150" height="110" viewBox="0 0 150 110" fill="none" stroke="#7A8B6E" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left hand / fingers -->
+      <path d="M28 76 Q24 55 27 38 Q29 30 35 30 Q39 30 40 37 L41 50" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M41 50 L41 32 Q41 25 45 25 Q49 25 49 32 L49 47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M49 47 L49 30 Q49 23 53 23 Q57 23 57 30 L57 45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M57 45 L57 34 Q57 27 61 27 Q65 27 65 34 L65 56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M28 76 Q26 86 34 90 Q46 96 68 90 Q74 84 74 74 L65 56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Water droplets -->
+      <ellipse cx="92" cy="18" rx="3.5" ry="5.5" fill="#7A8B6E" opacity="0.28"/>
+      <ellipse cx="104" cy="10" rx="2.8" ry="4.5" fill="#7A8B6E" opacity="0.22"/>
+      <ellipse cx="116" cy="17" rx="3.2" ry="5" fill="#7A8B6E" opacity="0.19"/>
+      <path d="M84 36 Q96 42 108 36" stroke-width="1.3" opacity="0.45" stroke-linecap="round"/>
+      <!-- Soap bar -->
+      <rect x="100" y="55" width="34" height="24" rx="5" stroke-width="1.7"/>
+      <path d="M103 64 Q117 59 131 64" stroke-width="1.1" opacity="0.5" stroke-linecap="round"/>
+      <!-- foam bubbles -->
+      <circle cx="88" cy="50" r="4.5" stroke-width="1.3" opacity="0.38"/>
+      <circle cx="79" cy="42" r="3.2" stroke-width="1.3" opacity="0.32"/>
+      <circle cx="92" cy="40" r="2.8" stroke-width="1.3" opacity="0.28"/>
+    </svg>
+  </div>
+
+  <ul class="wash-list">
+    <li>
+      <span class="wash-item-en">Before Returning to Work</span>
+      <span class="wash-item-jp">作業に戻る前</span>
+    </li>
+    <li>
+      <span class="wash-item-en">After Using the Restroom</span>
+      <span class="wash-item-jp">トイレの後</span>
+    </li>
+    <li>
+      <span class="wash-item-en">After Handling Food, Trash, or Raw Ingredients</span>
+      <span class="wash-item-jp">食品、ゴミ、生の食材を扱った後</span>
+    </li>
+    <li>
+      <span class="wash-item-en">After Any Activity That May Contaminate Hands</span>
+      <span class="wash-item-jp">手を汚す可能性のある作業の後</span>
+    </li>
+  </ul>
+
+  <div class="kyo-badge">
+    <svg class="kyo-circle" viewBox="0 0 50 50" fill="none">
+      <circle cx="25" cy="25" r="22" stroke="#7A8B6E" stroke-width="1.3" opacity="0.65"/>
+      <text x="25" y="32" font-family="'Noto Sans JP',sans-serif" font-size="20" fill="#7A8B6E" text-anchor="middle" font-weight="400">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ═══ SIGN 3 — CHOKING FIRST AID ═══ -->
+<div class="sign page-break">
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="divider">
+
+  <div class="headline" style="margin-bottom:0.06in;">
+    <div class="headline-en" style="font-size:21pt;">Choking First Aid</div>
+    <div class="headline-jp">のどに詰まった時の対応</div>
+  </div>
+
+  <!-- ADULTS -->
+  <div class="choke-section-header">Adults (1 Year and Over)</div>
+  <div class="choke-section-jp">大人（1歳以上）</div>
+
+  <div class="choke-steps">
+    <div class="choke-step">
+      <div class="step-num">1</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="22" cy="9" r="6"/>
+        <path d="M22 15 Q16 22 16 32 Q20 40 24 40"/>
+        <path d="M22 15 Q28 20 30 28"/>
+        <path d="M16 32 L10 50"/>
+        <path d="M30 28 L36 50"/>
+        <path d="M7 24 L15 28" stroke-width="2.2"/>
+        <text x="4" y="22" font-size="8" fill="#7A8B6E" stroke="none" font-family="sans-serif">→</text>
+      </svg>
+      <div class="step-en">Lean forward,<br>support chest</div>
+      <div class="step-jp">前傾みになる</div>
+    </div>
+    <div class="choke-step">
+      <div class="step-num">2</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="22" cy="9" r="6"/>
+        <path d="M22 15 Q16 22 16 32"/>
+        <path d="M22 15 Q28 20 30 28"/>
+        <path d="M16 32 L10 50"/>
+        <path d="M30 28 L36 50"/>
+        <rect x="2" y="24" width="14" height="9" rx="3" fill="#C8D8BC" stroke="#7A8B6E"/>
+        <path d="M16 29 L20 29" stroke-width="2"/>
+      </svg>
+      <div class="step-en">Give 5<br>back blows</div>
+      <div class="step-jp">肩甲骨の間を叩く（5回）</div>
+    </div>
+    <div class="choke-step">
+      <div class="step-num">3</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="9" r="5"/>
+        <path d="M20 14 L20 38"/>
+        <path d="M14 48 L20 38 L26 48"/>
+        <path d="M14 22 L28 22"/>
+        <circle cx="36" cy="11" r="4"/>
+        <path d="M30 36 Q26 28 28 22 Q32 17 36 15 Q40 17 44 22 Q46 28 42 36"/>
+        <path d="M27 30 L30 26"/>
+        <path d="M45 30 L42 26"/>
+      </svg>
+      <div class="step-en">Give 5 abdominal<br>thrusts</div>
+      <div class="step-jp">腹部突き上げ（5回）</div>
+    </div>
+    <div class="choke-step">
+      <div class="step-num">4</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 20 Q10 30 14 40 Q20 50 30 46 Q40 42 40 32 Q40 22 30 18" fill="none"/>
+        <path d="M26 13 L30 18 L24 20" fill="none"/>
+        <text x="27" y="36" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#7A8B6E" stroke="none">REPEAT</text>
+      </svg>
+      <div class="step-en">Repeat until object<br>is out or help arrives</div>
+      <div class="step-jp">異物が取れるまで繰り返す</div>
+    </div>
+  </div>
+
+  <hr class="divider" style="width:100%;margin:0.1in 0;opacity:0.2;">
+
+  <!-- INFANTS -->
+  <div class="choke-section-header">Infants (Under 1 Year)</div>
+  <div class="choke-section-jp">乳児（1歳未満）</div>
+
+  <div class="choke-steps">
+    <div class="choke-step">
+      <div class="step-num">1</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="30" height="12" rx="5"/>
+        <circle cx="38" cy="22" r="7"/>
+        <path d="M8 36 L4 50"/>
+        <path d="M44 36 L48 50"/>
+      </svg>
+      <div class="step-en">Support infant<br>face down</div>
+      <div class="step-jp">腹ばいに抱える</div>
+    </div>
+    <div class="choke-step">
+      <div class="step-num">2</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="30" width="30" height="12" rx="5"/>
+        <circle cx="38" cy="22" r="7"/>
+        <path d="M8 36 L4 50"/>
+        <path d="M44 36 L48 50"/>
+        <path d="M4 26 L12 32" stroke-width="2.2"/>
+      </svg>
+      <div class="step-en">Give 5<br>back slaps</div>
+      <div class="step-jp">背中を叩く（5回）</div>
+    </div>
+    <div class="choke-step">
+      <div class="step-num">3</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="30" width="32" height="14" rx="5"/>
+        <circle cx="14" cy="22" r="7"/>
+        <path d="M24 30 L24 24" stroke-width="2.4"/>
+        <path d="M30 30 L30 24" stroke-width="2.4"/>
+      </svg>
+      <div class="step-en">Give 5<br>chest thrusts</div>
+      <div class="step-jp">胸部突き上げ（5回）</div>
+    </div>
+    <div class="choke-step">
+      <div class="step-num">4</div>
+      <svg width="54" height="58" viewBox="0 0 54 58" fill="none" stroke="#7A8B6E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="16" y="12" width="22" height="36" rx="4"/>
+        <line x1="22" y1="42" x2="32" y2="42"/>
+        <text x="27" y="33" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7A8B6E" stroke="none" font-weight="700">911</text>
+      </svg>
+      <div class="step-en">Call 911 if infant<br>becomes unresponsive</div>
+      <div class="step-jp">反応がない場合は911に連絡</div>
+    </div>
+  </div>
+
+  <div class="emergency-box">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <div>
+      <div class="emergency-text-en">Call 911 in an Emergency</div>
+      <div class="emergency-text-jp">緊急時は911にお電話ください</div>
+    </div>
+  </div>
+
+  <div class="kyo-badge">
+    <svg class="kyo-circle" viewBox="0 0 50 50" fill="none">
+      <circle cx="25" cy="25" r="22" stroke="#7A8B6E" stroke-width="1.3" opacity="0.65"/>
+      <text x="25" y="32" font-family="'Noto Sans JP',sans-serif" font-size="20" fill="#7A8B6E" text-anchor="middle" font-weight="400">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ═══ SIGN 4 — FREE WIFI ═══ -->
+<div class="sign page-break">
+
+  <!-- watercolor behind wifi -->
+  <svg class="watercolor" style="top:35%;left:50%;transform:translate(-50%,-50%);width:5in;height:4.5in;" viewBox="0 0 480 432" fill="none">
+    <ellipse cx="240" cy="216" rx="200" ry="155" fill="#A8B89A" opacity="0.13"/>
+    <ellipse cx="220" cy="226" rx="145" ry="110" fill="#8B9B7A" opacity="0.10"/>
+    <ellipse cx="248" cy="200" rx="105" ry="84" fill="#7A8B6E" opacity="0.08"/>
+  </svg>
+
+  <!-- watercolor bottom left -->
+  <svg class="watercolor" style="bottom:0;left:0;width:3in;height:1.8in;" viewBox="0 0 288 173" fill="none">
+    <ellipse cx="70" cy="162" rx="130" ry="62" fill="#8B9B7A" opacity="0.13" transform="rotate(-12 70 162)"/>
+    <ellipse cx="38" cy="168" rx="88" ry="44" fill="#7A8B6E" opacity="0.09" transform="rotate(-6 38 168)"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="divider">
+
+  <div class="headline">
+    <div class="headline-en" style="font-size:36pt;">Free WiFi</div>
+    <div class="headline-jp">無料 Wi-Fi</div>
+  </div>
+
+  <!-- Large WiFi icon -->
+  <div style="margin:0.3in 0 0.1in;position:relative;z-index:1;">
+    <svg width="170" height="140" viewBox="0 0 170 140" fill="none" stroke="#7A8B6E" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 56 Q85 4 152 56" stroke-width="11" opacity="0.22"/>
+      <path d="M34 74 Q85 28 136 74" stroke-width="11" opacity="0.38"/>
+      <path d="M52 92 Q85 62 118 92" stroke-width="11" opacity="0.58"/>
+      <path d="M68 108 Q85 90 102 108" stroke-width="11" opacity="0.80"/>
+      <circle cx="85" cy="124" r="8" fill="#7A8B6E" stroke="none"/>
+    </svg>
+  </div>
+
+  <div class="wifi-info">
+    <div class="wifi-row">
+      <div class="wifi-label">Network</div>
+      <div class="wifi-value">KYO_MATCHA</div>
+    </div>
+    <div class="wifi-row">
+      <div class="wifi-label">Password</div>
+      <div class="wifi-value" style="font-size:26pt;">kyomatcha</div>
+    </div>
+  </div>
+
+  <div class="kyo-badge">
+    <svg class="kyo-circle" viewBox="0 0 50 50" fill="none">
+      <circle cx="25" cy="25" r="22" stroke="#7A8B6E" stroke-width="1.3" opacity="0.65"/>
+      <text x="25" y="32" font-family="'Noto Sans JP',sans-serif" font-size="20" fill="#7A8B6E" text-anchor="middle" font-weight="400">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ═══ SIGN 5 — HOURS ═══ -->
+<div class="sign">
+
+  <svg class="watercolor" style="bottom:0;left:0;width:3.5in;height:2.5in;" viewBox="0 0 336 240" fill="none">
+    <ellipse cx="100" cy="212" rx="185" ry="82" fill="#8B9B7A" opacity="0.12" transform="rotate(-15 100 212)"/>
+    <ellipse cx="58" cy="222" rx="122" ry="56" fill="#7A8B6E" opacity="0.09" transform="rotate(-8 58 222)"/>
+    <ellipse cx="28" cy="232" rx="82" ry="38" fill="#A8B89A" opacity="0.16" transform="rotate(-4 28 232)"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="divider">
+
+  <div class="headline">
+    <div class="headline-en" style="font-size:36pt;">Hours</div>
+    <div class="headline-jp">営業時間</div>
+  </div>
+
+  <div class="hours-block">
+    <div class="hours-row">
+      <div class="hours-day-en">Monday — Friday</div>
+      <div class="hours-day-jp">月曜日 — 金曜日</div>
+      <div class="hours-time">10:00 AM – 8:00 PM</div>
+    </div>
+    <div class="hours-row">
+      <div class="hours-day-en">Saturday — Sunday</div>
+      <div class="hours-day-jp">土曜日 — 日曜日</div>
+      <div class="hours-time">9:00 AM – 9:00 PM</div>
+    </div>
+  </div>
+
+  <div style="margin-top:0.35in;text-align:center;position:relative;z-index:1;">
+    <div style="font-family:var(--font-en);font-size:10pt;letter-spacing:0.22em;text-transform:uppercase;color:var(--matcha-dark);">Thank You — See You Soon</div>
+    <div style="font-family:var(--font-jp);font-size:8.5pt;color:var(--matcha-mid);margin-top:5px;line-height:2;">
+      ご来店ありがとうございます<br>またのお越しをお待ちしております
+    </div>
+  </div>
+
+  <div class="kyo-badge">
+    <svg class="kyo-circle" viewBox="0 0 50 50" fill="none">
+      <circle cx="25" cy="25" r="22" stroke="#7A8B6E" stroke-width="1.3" opacity="0.65"/>
+      <text x="25" y="32" font-family="'Noto Sans JP',sans-serif" font-size="20" fill="#7A8B6E" text-anchor="middle" font-weight="400">京</text>
+    </svg>
+  </div>
+</div>
+
+</body>
+</html>
