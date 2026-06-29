@@ -18,6 +18,9 @@
   --ink-soft:    #4A4338;
   --ink-muted:   #7A7060;
   --red:         #B85450;
+  --label:       #8FA08A;
+  --content-ink: #1E2A1C;
+  --tag-bg:      #DDE8D8;
   --fn-en: 'Shippori Mincho', 'Times New Roman', serif;
   --fn-zh: 'M PLUS Rounded 1c', sans-serif;
 }
@@ -103,12 +106,12 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
 /* ── Body text ───────────────────────────────────── */
 .body-en {
   font-family:var(--fn-en); font-weight:400; font-size:11.5pt;
-  line-height:1.75; color:var(--ink-soft); text-align:center;
+  line-height:1.75; color:var(--content-ink); text-align:center;
   max-width:5.8in; letter-spacing:0.02em;
 }
 .body-zh {
-  font-family:var(--fn-zh); font-weight:400; font-size:8.5pt;
-  color:var(--ink-muted); margin-top:5px;
+  font-family:var(--fn-zh); font-weight:400; font-size:8pt;
+  color:var(--label); margin-top:4px;
   line-height:1.75; text-align:center; letter-spacing:0.04em;
 }
 
@@ -139,12 +142,13 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   padding:0.16in 0.22in 0.2in;
 }
 .abox-en {
-  font-family:var(--fn-en); font-size:9.5pt; letter-spacing:0.16em;
-  text-transform:uppercase; color:var(--ink-soft); text-align:center;
+  font-family:var(--fn-zh); font-size:7.5pt; font-weight:500;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--label); text-align:center;
 }
 .abox-zh {
-  font-family:var(--fn-zh); font-size:7.5pt; color:var(--matcha);
-  text-align:center; margin-top:2px; margin-bottom:0.1in; letter-spacing:0.04em;
+  font-family:var(--fn-zh); font-size:7pt; color:var(--label);
+  text-align:center; margin-top:2px; margin-bottom:0.1in; letter-spacing:0.06em; opacity:0.75;
 }
 .allergen-grid {
   display:grid; grid-template-columns:repeat(4,1fr);
@@ -153,11 +157,11 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
 .allergen-item { display:flex; flex-direction:column; align-items:center; gap:5px; }
 .ai-icon { width:48px; height:48px; color:var(--matcha); }
 .ai-en {
-  font-family:var(--fn-en); font-size:9pt; letter-spacing:0.08em;
-  text-transform:uppercase; color:var(--ink); text-align:center; font-weight:400;
+  font-family:var(--fn-en); font-size:9.5pt; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--content-ink); text-align:center; font-weight:500;
 }
 .ai-zh {
-  font-family:var(--fn-zh); font-size:7.5pt; color:var(--matcha);
+  font-family:var(--fn-zh); font-size:7pt; color:var(--label);
   text-align:center; letter-spacing:0.04em;
 }
 
@@ -172,24 +176,26 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
 }
 .wash-list li:last-child { border-bottom:none; }
 .wi-en {
-  font-family:var(--fn-en); font-size:13pt; letter-spacing:0.1em;
-  text-transform:uppercase; color:var(--ink); font-weight:400;
+  font-family:var(--fn-en); font-size:12pt; letter-spacing:0.03em;
+  color:var(--content-ink); font-weight:400;
 }
 .wi-zh {
-  font-family:var(--fn-zh); font-size:8pt; color:var(--matcha);
-  font-weight:300; letter-spacing:0.04em;
+  font-family:var(--fn-zh); font-size:7.5pt; color:var(--label);
+  font-weight:400; letter-spacing:0.04em;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SIGN 3 — CHOKING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .section-hed {
-  font-family:var(--fn-en); font-size:12pt; letter-spacing:0.2em;
-  text-transform:uppercase; color:var(--ink); font-weight:400;
-  text-align:center; margin:0.12in 0 0.03in;
+  font-family:var(--fn-zh); font-size:8pt; font-weight:600;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:#fff; background:var(--matcha);
+  padding:4px 18px; border-radius:2px; display:inline-block;
+  text-align:center; margin:0.12in 0 0.04in;
 }
 .section-zh {
-  font-family:var(--fn-zh); font-size:8pt; color:var(--matcha);
+  font-family:var(--fn-zh); font-size:7.5pt; color:var(--label);
   text-align:center; margin-bottom:0.1in; letter-spacing:0.04em;
 }
 .steps {
@@ -198,15 +204,15 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
 }
 .step { display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center; }
 .step-n {
-  font-family:var(--fn-en); font-size:19pt; color:var(--matcha-pale);
-  font-weight:300; line-height:1;
+  font-family:var(--fn-en); font-size:13pt; color:var(--matcha-pale);
+  font-weight:400; line-height:1;
 }
 .step-en {
-  font-family:var(--fn-en); font-size:8pt; letter-spacing:0.05em;
-  text-transform:uppercase; color:var(--ink-soft); font-weight:400; line-height:1.4;
+  font-family:var(--fn-en); font-size:8.5pt; letter-spacing:0.02em;
+  color:var(--content-ink); font-weight:500; line-height:1.4;
 }
 .step-zh {
-  font-family:var(--fn-zh); font-size:7pt; color:var(--matcha);
+  font-family:var(--fn-zh); font-size:6.5pt; color:var(--label);
   line-height:1.5; letter-spacing:0.03em;
 }
 .emergency {
@@ -233,20 +239,19 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   display:flex; flex-direction:column; align-items:center; gap:4px;
 }
 .wf-label {
-  font-family:var(--fn-en); font-size:9pt; letter-spacing:0.3em;
-  text-transform:uppercase; color:var(--matcha); font-weight:400;
+  font-family:var(--fn-zh); font-size:7.5pt; font-weight:500;
+  letter-spacing:0.25em; text-transform:uppercase; color:var(--label);
 }
 .wf-label-zh {
-  font-family:var(--fn-zh); font-size:7.5pt; color:var(--matcha-lt);
-  letter-spacing:0.06em; margin-top:1px;
+  display:none;
 }
 .wf-value {
-  font-family:var(--fn-en); font-weight:400; font-size:24pt;
-  letter-spacing:0.1em; color:var(--ink); text-transform:uppercase;
+  font-family:var(--fn-en); font-weight:400; font-size:26pt;
+  letter-spacing:0.08em; color:var(--content-ink); text-transform:uppercase; margin-top:4px;
 }
 .wf-value-pw {
-  font-family:var(--fn-en); font-weight:400; font-size:22pt;
-  letter-spacing:0.08em; color:var(--ink); text-transform:none;
+  font-family:var(--fn-en); font-weight:400; font-size:23pt;
+  letter-spacing:0.06em; color:var(--content-ink); text-transform:none; margin-top:4px;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -260,13 +265,13 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
 }
 .hours-row:first-child { border-top:none; padding-top:0; margin-top:0; }
 .hr-day-en {
-  font-family:var(--fn-en); font-size:12pt; letter-spacing:0.22em;
-  text-transform:uppercase; color:var(--matcha); font-weight:400;
+  font-family:var(--fn-zh); font-size:8pt; font-weight:600;
+  letter-spacing:0.22em; text-transform:uppercase; color:var(--label);
 }
-.hr-day-zh { font-family:var(--fn-zh); font-size:8pt; color:var(--matcha-lt); letter-spacing:0.06em; }
+.hr-day-zh { font-family:var(--fn-zh); font-size:7.5pt; color:var(--label); letter-spacing:0.06em; opacity:0.8; margin-top:2px; }
 .hr-time {
-  font-family:var(--fn-en); font-weight:300; font-size:33pt;
-  letter-spacing:0.06em; color:var(--ink); line-height:1;
+  font-family:var(--fn-en); font-weight:300; font-size:36pt;
+  letter-spacing:0.04em; color:var(--content-ink); line-height:1; margin-top:6px;
 }
 
 @media print {
