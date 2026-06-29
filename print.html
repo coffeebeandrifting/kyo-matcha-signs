@@ -275,7 +275,7 @@ body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
 .hours-row {
   background:white; border-radius:var(--r-md);
   border:1.5pt solid var(--matcha-pale);
-  padding:0.18in 0.3in;
+  padding:0.11in 0.3in;
   display:flex; flex-direction:column; align-items:center; gap:5px;
 }
 .hr-day-en {
@@ -287,7 +287,7 @@ body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
   letter-spacing:0.06em; opacity:0.8; margin-top:1px;
 }
 .hr-time {
-  font-family:var(--fn-en); font-weight:300; font-size:26pt;
+  font-family:var(--fn-en); font-weight:300; font-size:22pt;
   letter-spacing:0.02em; color:var(--content-ink); line-height:1; margin-top:5px;
   white-space:nowrap;
 }
@@ -892,8 +892,8 @@ body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
     </div>
 
     <!-- Kawaii clock illustration -->
-    <div style="margin:0.14in 0 0.2in;">
-      <svg width="170" height="150" viewBox="0 0 170 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div style="margin:0.08in 0 0.12in;">
+      <svg width="130" height="115" viewBox="0 0 170 150" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- clock body — big friendly circle -->
         <circle cx="85" cy="80" r="58" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="3"/>
         <!-- inner ring -->
@@ -942,14 +942,24 @@ body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
 
     <div class="hours-block">
       <div class="hours-row">
-        <div class="hr-day-en">Sunday — Thursday</div>
-        <div class="hr-day-zh">周日至周四</div>
-        <div class="hr-time">11:30 AM – 10:00 PM</div>
+        <div class="hr-day-en">Monday — Thursday</div>
+        <div class="hr-day-zh">周一至周四</div>
+        <div class="hr-time">12:00 – 22:00</div>
       </div>
       <div class="hours-row">
-        <div class="hr-day-en">Friday — Saturday</div>
-        <div class="hr-day-zh">周五至周六</div>
-        <div class="hr-time">12:00 PM – 11:30 PM</div>
+        <div class="hr-day-en">Friday</div>
+        <div class="hr-day-zh">周五</div>
+        <div class="hr-time">12:00 – 22:30</div>
+      </div>
+      <div class="hours-row">
+        <div class="hr-day-en">Saturday</div>
+        <div class="hr-day-zh">周六</div>
+        <div class="hr-time">11:30 – 22:30</div>
+      </div>
+      <div class="hours-row">
+        <div class="hr-day-en">Sunday</div>
+        <div class="hr-day-zh">周日</div>
+        <div class="hr-time">11:30 – 22:00</div>
       </div>
     </div>
 
