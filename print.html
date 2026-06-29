@@ -5,101 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KYO MATCHA — Printable Signs</title>
 <link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=shippori-mincho:400,500,600|m-plus-rounded-1c:300,400&display=swap" rel="stylesheet">
+<link href="https://fonts.bunny.net/css?family=shippori-mincho:400,500,600|m-plus-rounded-1c:400,500,700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:       #F4EFE4;
-  --cream-dark:  #EDE5D4;
-  --matcha:      #6B7C5E;
-  --matcha-mid:  #7D9170;
-  --matcha-lt:   #9EAF8E;
-  --matcha-pale: #C8D5BC;
-  --ink:         #2E2A22;
-  --ink-soft:    #4A4338;
-  --ink-muted:   #7A7060;
-  --red:         #B85450;
-  --label:       #8FA08A;
-  --content-ink: #1E2A1C;
-  --tag-bg:      #DDE8D8;
-  --fn-en: 'Shippori Mincho', 'Times New Roman', serif;
+  /* ── Cute JP cartoon palette ── */
+  --cream:       #FDFAF3;        /* warm white, like fresh mochi */
+  --cream-dark:  #F5EFE0;
+  --matcha:      #5C8A5C;        /* deeper, more saturated matcha */
+  --matcha-mid:  #7AAD7A;
+  --matcha-lt:   #A8CCA8;
+  --matcha-pale: #D4EAD4;
+  --blush:       #F2C4CE;        /* sakura pink accent */
+  --blush-dark:  #E8A0B0;
+  --butter:      #F9E4A0;        /* soft yellow accent */
+  --sky:         #C8E6F5;        /* light blue accent */
+  --ink:         #2B3A2B;        /* deep forest ink */
+  --ink-soft:    #4A5E4A;
+  --label:       #90B090;
+  --content-ink: #1E3020;
+  --red:         #E07070;        /* softer, rounder red */
+  --red-lt:      #FDE8E8;
+  --fn-en: 'Shippori Mincho', serif;
   --fn-zh: 'M PLUS Rounded 1c', sans-serif;
+  /* rounded corners everywhere */
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
+body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
 
 @media print {
-  body { background:white; }
+  body { background:white; margin:0; padding:0; }
   .no-print { display:none !important; }
-  .sign { box-shadow:none; margin:0; page-break-after:always; }
+  .sign {
+    width:8.5in !important; height:11in !important;
+    min-height:unset !important; max-height:11in !important;
+    margin:0 !important; page-break-after:always !important;
+    box-shadow:none !important; overflow:hidden !important;
+  }
 }
 
 .no-print {
   text-align:center; padding:14px 20px;
   font-family:var(--fn-zh); font-size:12px; color:#555;
-  background:#EEE8DF; border-bottom:1px solid #D5CBBF;
+  background:#E8F0E8; border-bottom:1px solid #C8D8C8;
 }
 
-/* ── Sign shell ──────────────────────────────────── */
+/* ── Sign shell ─────────────────────────────────── */
 .sign {
-  width: 8.5in;
-  min-height: 11in;
-  margin: 36px auto;
-  position: relative;
-  overflow: hidden;
-  background: var(--cream);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0.68in 0.82in 0.65in;
-  box-shadow: 0 6px 50px rgba(0,0,0,0.22);
+  width:8.5in; min-height:11in;
+  margin:36px auto;
+  position:relative; overflow:hidden;
+  background:var(--cream);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:flex-start;
+  padding:0.65in 0.82in 0.6in;
+  box-shadow:0 8px 50px rgba(0,0,0,0.18);
 }
 
-/* Paper grain overlay */
+/* Paper grain */
 .sign::before {
-  content:'';
-  position:absolute; inset:0; z-index:1; pointer-events:none;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
 }
-
-/* everything inside sign needs z-index above grain */
 .sign > * { position:relative; z-index:2; }
 .wc { position:absolute; z-index:0; pointer-events:none; }
 
-/* ── Logo ────────────────────────────────────────── */
-.logo { text-align:center; color:var(--matcha); margin-bottom:0.22in; flex-shrink:0; }
+/* ── Logo ───────────────────────────────────────── */
+.logo { text-align:center; color:var(--matcha); margin-bottom:0.2in; flex-shrink:0; }
 .logo-kyo {
-  display:block;
-  font-family:var(--fn-en); font-weight:400; font-size:30pt;
+  display:block; font-family:var(--fn-en); font-weight:400; font-size:30pt;
   letter-spacing:0.38em; text-indent:0.38em; line-height:1;
 }
 .logo-matcha {
-  display:block;
-  font-family:var(--fn-en); font-weight:400; font-size:8pt;
+  display:block; font-family:var(--fn-en); font-weight:400; font-size:8pt;
   letter-spacing:0.58em; text-indent:0.58em; margin-top:4px;
 }
 
-/* ── Hairline divider ────────────────────────────── */
-.rule {
-  width:100%; border:none;
-  border-top:0.5pt solid var(--matcha);
-  opacity:0.28; margin:0.08in 0; flex-shrink:0;
+/* ── Divider ─────────────────────────────────────── */
+.rule { width:100%; border:none; border-top:1.2pt solid var(--matcha-lt); margin:0.08in 0; flex-shrink:0; opacity:0.6; }
+
+/* ── Content wrapper (centered between logo and badge) ── */
+.content {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  width:100%; margin-top:-80px;
 }
-.rule-zh { opacity:0.15; }
 
 /* ── Headline ────────────────────────────────────── */
 .hed { text-align:center; margin-bottom:0.18in; flex-shrink:0; }
 .hed-en {
   font-family:var(--fn-en); font-weight:400; font-size:23pt;
-  letter-spacing:0.16em; text-transform:uppercase;
+  letter-spacing:0.14em; text-transform:uppercase;
   color:var(--ink); line-height:1.15;
 }
 .hed-zh {
-  font-family:var(--fn-zh); font-weight:300; font-size:9pt;
+  font-family:var(--fn-zh); font-weight:500; font-size:9pt;
   color:var(--matcha); margin-top:5px; letter-spacing:0.06em;
 }
 
@@ -115,66 +119,67 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   line-height:1.75; text-align:center; letter-spacing:0.04em;
 }
 
-/* ── Middle content wrapper — vertically centered between logo and badge ── */
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: -80px;
-}
-
 /* ── 京 badge ─────────────────────────────────────── */
 .badge {
-  margin-top: auto; padding-top: 0.15in;
-  display:flex; flex-direction:column;
-  align-items:center; flex-shrink:0;
+  margin-top:auto; padding-top:0.15in;
+  display:flex; flex-direction:column; align-items:center; flex-shrink:0;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SIGN 1 — ALLERGEN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .allergen-box {
-  border:0.6pt solid var(--matcha); opacity:0.92;
+  border:2pt solid var(--matcha-lt);
+  border-radius:var(--r-md);
+  background:rgba(212,234,212,0.18);
   width:100%; max-width:6.1in;
   padding:0.16in 0.22in 0.2in;
 }
 .abox-en {
-  font-family:var(--fn-zh); font-size:7.5pt; font-weight:500;
+  font-family:var(--fn-zh); font-size:7.5pt; font-weight:700;
   letter-spacing:0.22em; text-transform:uppercase;
   color:var(--label); text-align:center;
 }
 .abox-zh {
   font-family:var(--fn-zh); font-size:7pt; color:var(--label);
-  text-align:center; margin-top:2px; margin-bottom:0.1in; letter-spacing:0.06em; opacity:0.75;
+  text-align:center; margin-top:2px; margin-bottom:0.1in;
+  letter-spacing:0.06em; opacity:0.8;
 }
 .allergen-grid {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  gap:0.16in 0.1in;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0.14in 0.1in;
 }
-.allergen-item { display:flex; flex-direction:column; align-items:center; gap:5px; }
-.ai-icon { width:48px; height:48px; color:var(--matcha); }
+.allergen-item {
+  display:flex; flex-direction:column; align-items:center; gap:5px;
+  background:white; border-radius:var(--r-sm);
+  padding:0.1in 0.06in 0.08in;
+  border:1.5pt solid var(--matcha-pale);
+}
+.ai-icon { width:46px; height:46px; }
 .ai-en {
-  font-family:var(--fn-en); font-size:9.5pt; letter-spacing:0.04em;
-  text-transform:uppercase; color:var(--content-ink); text-align:center; font-weight:500;
+  font-family:var(--fn-zh); font-size:8.5pt; letter-spacing:0.02em;
+  color:var(--content-ink); text-align:center; font-weight:700;
 }
 .ai-zh {
   font-family:var(--fn-zh); font-size:7pt; color:var(--label);
-  text-align:center; letter-spacing:0.04em;
+  text-align:center; letter-spacing:0.04em; font-weight:400;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SIGN 2 — HANDWASH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.wash-list { list-style:none; width:100%; max-width:5.8in; }
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.wash-list { list-style:none; width:100%; max-width:5.6in; }
 .wash-list li {
-  border-bottom:0.5pt solid var(--matcha-pale);
-  padding:0.13in 0;
+  border-bottom:1.5pt solid var(--matcha-pale);
+  padding:0.12in 0 0.12in 0.22in;
   display:flex; flex-direction:column; gap:3px;
+  position:relative;
 }
 .wash-list li:last-child { border-bottom:none; }
+.wash-list li::before {
+  content:'✿';
+  position:absolute; left:0; top:0.14in;
+  color:var(--matcha-mid); font-size:10pt;
+}
 .wi-en {
   font-family:var(--fn-en); font-size:12pt; letter-spacing:0.03em;
   color:var(--content-ink); font-weight:400;
@@ -184,14 +189,14 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   font-weight:400; letter-spacing:0.04em;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SIGN 3 — CHOKING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .section-hed {
-  font-family:var(--fn-zh); font-size:8pt; font-weight:600;
-  letter-spacing:0.18em; text-transform:uppercase;
-  color:#fff; background:var(--matcha);
-  padding:4px 18px; border-radius:2px; display:inline-block;
+  font-family:var(--fn-zh); font-size:8pt; font-weight:700;
+  letter-spacing:0.16em; text-transform:uppercase;
+  color:white; background:var(--matcha);
+  padding:5px 20px; border-radius:999px; display:inline-block;
   text-align:center; margin:0.12in 0 0.04in;
 }
 .section-zh {
@@ -202,13 +207,22 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   display:grid; grid-template-columns:repeat(4,1fr);
   gap:0.1in; width:100%; max-width:6.2in;
 }
-.step { display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center; }
+.step {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  text-align:center;
+  background:white; border-radius:var(--r-md);
+  border:1.5pt solid var(--matcha-pale);
+  padding:0.1in 0.06in 0.08in;
+}
 .step-n {
-  font-family:var(--fn-en); font-size:13pt; color:var(--matcha-pale);
-  font-weight:400; line-height:1;
+  font-family:var(--fn-zh); font-size:10pt; font-weight:700;
+  color:white; background:var(--matcha-mid);
+  width:22px; height:22px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  line-height:1; margin-bottom:2px;
 }
 .step-en {
-  font-family:var(--fn-en); font-size:8.5pt; letter-spacing:0.02em;
+  font-family:var(--fn-zh); font-size:7.5pt; letter-spacing:0.01em;
   color:var(--content-ink); font-weight:500; line-height:1.4;
 }
 .step-zh {
@@ -216,103 +230,101 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   line-height:1.5; letter-spacing:0.03em;
 }
 .emergency {
-  background:var(--red); color:white;
-  padding:0.13in 0.28in; display:flex; align-items:center;
+  background:var(--red-lt); border:2pt solid var(--red);
+  border-radius:var(--r-md); color:var(--red);
+  padding:0.12in 0.28in; display:flex; align-items:center;
   gap:0.14in; margin-top:0.14in; width:100%; max-width:5.5in;
 }
 .emg-en {
-  font-family:var(--fn-en); font-size:14pt; font-weight:500;
-  letter-spacing:0.1em; text-transform:uppercase;
+  font-family:var(--fn-zh); font-size:13pt; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--red);
 }
 .emg-zh {
-  font-family:var(--fn-zh); font-size:8pt; font-weight:300;
-  margin-top:3px; opacity:0.9; letter-spacing:0.04em;
+  font-family:var(--fn-zh); font-size:8pt; font-weight:500;
+  margin-top:3px; color:var(--red); opacity:0.85; letter-spacing:0.04em;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SIGN 4 — WIFI
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.wifi-info { display:flex; flex-direction:column; width:100%; max-width:5in; }
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.wifi-info { display:flex; flex-direction:column; width:100%; max-width:5in; gap:0.06in; }
 .wifi-row {
-  border-top:0.5pt solid var(--matcha-pale);
-  padding-top:0.18in; margin-top:0.18in;
-  display:flex; flex-direction:column; align-items:center; gap:4px;
+  background:white; border-radius:var(--r-md);
+  border:1.5pt solid var(--matcha-pale);
+  padding:0.16in 0.3in;
+  display:flex; flex-direction:column; align-items:center; gap:5px;
 }
 .wf-label {
-  font-family:var(--fn-zh); font-size:7.5pt; font-weight:500;
-  letter-spacing:0.25em; text-transform:uppercase; color:var(--label);
+  font-family:var(--fn-zh); font-size:7.5pt; font-weight:700;
+  letter-spacing:0.22em; text-transform:uppercase; color:var(--label);
 }
-.wf-label-zh {
-  display:none;
-}
+.wf-label-zh { display:none; }
 .wf-value {
   font-family:var(--fn-en); font-weight:400; font-size:26pt;
-  letter-spacing:0.08em; color:var(--content-ink); text-transform:uppercase; margin-top:4px;
+  letter-spacing:0.08em; color:var(--content-ink); text-transform:uppercase; margin-top:2px;
 }
 .wf-value-pw {
   font-family:var(--fn-en); font-weight:400; font-size:23pt;
-  letter-spacing:0.06em; color:var(--content-ink); text-transform:none; margin-top:4px;
+  letter-spacing:0.06em; color:var(--content-ink); text-transform:none; margin-top:2px;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SIGN 5 — HOURS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.hours-block { display:flex; flex-direction:column; width:100%; max-width:5.4in; }
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hours-block { display:flex; flex-direction:column; width:100%; max-width:5.4in; gap:0.12in; }
 .hours-row {
-  border-top:0.5pt solid var(--matcha-pale);
-  padding-top:0.2in; margin-top:0.2in;
-  display:flex; flex-direction:column; align-items:center; gap:7px;
+  background:white; border-radius:var(--r-md);
+  border:1.5pt solid var(--matcha-pale);
+  padding:0.18in 0.3in;
+  display:flex; flex-direction:column; align-items:center; gap:5px;
 }
-.hours-row:first-child { border-top:none; padding-top:0; margin-top:0; }
 .hr-day-en {
-  font-family:var(--fn-zh); font-size:8pt; font-weight:600;
-  letter-spacing:0.22em; text-transform:uppercase; color:var(--label);
+  font-family:var(--fn-zh); font-size:8pt; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--label);
 }
-.hr-day-zh { font-family:var(--fn-zh); font-size:7.5pt; color:var(--label); letter-spacing:0.06em; opacity:0.8; margin-top:2px; }
+.hr-day-zh {
+  font-family:var(--fn-zh); font-size:7pt; color:var(--label);
+  letter-spacing:0.06em; opacity:0.8; margin-top:1px;
+}
 .hr-time {
   font-family:var(--fn-en); font-weight:300; font-size:36pt;
-  letter-spacing:0.04em; color:var(--content-ink); line-height:1; margin-top:6px;
+  letter-spacing:0.04em; color:var(--content-ink); line-height:1; margin-top:5px;
 }
 
 @media print {
   body { background: white; margin: 0; padding: 0; }
   .no-print { display: none !important; }
   .sign {
-    width: 8.5in !important;
-    height: 11in !important;
-    min-height: unset !important;
-    max-height: 11in !important;
-    margin: 0 !important;
-    page-break-after: always !important;
-    box-shadow: none !important;
-    overflow: hidden !important;
+    width: 8.5in !important; height: 11in !important;
+    min-height: unset !important; max-height: 11in !important;
+    margin: 0 !important; page-break-after: always !important;
+    box-shadow: none !important; overflow: hidden !important;
   }
 }
 </style>
 </head>
 <body>
 
-<div class="no-print">🍵 KYO MATCHA — 5 Print-Ready Signs &nbsp;·&nbsp; File → Print → Letter, Portrait, one page per sheet</div>
+<div class="no-print">🍵 KYO MATCHA — 5 Print-Ready Signs · File → Print → Letter, Portrait, one per sheet</div>
 
 
-<!-- ══════════════════════════════════════════
-     SIGN 1 — ALLERGEN NOTICE
-══════════════════════════════════════════ -->
+<!-- ══════════════════ SIGN 1 — ALLERGEN ══════════════════ -->
 <div class="sign">
 
-  <!-- Watercolor: heavy bottom-left sweep -->
-  <svg class="wc" style="bottom:0;left:0;width:4in;height:3.2in;" viewBox="0 0 384 307" fill="none">
-    <ellipse cx="100" cy="260" rx="230" ry="100" fill="#6B7C5E" opacity="0.13" transform="rotate(-16 100 260)"/>
-    <ellipse cx="60"  cy="272" rx="170" ry="72"  fill="#7D9170" opacity="0.11" transform="rotate(-10 60 272)"/>
-    <ellipse cx="30"  cy="285" rx="110" ry="50"  fill="#9EAF8E" opacity="0.10" transform="rotate(-5 30 285)"/>
-    <ellipse cx="140" cy="290" rx="180" ry="55"  fill="#6B7C5E" opacity="0.07" transform="rotate(-20 140 290)"/>
-    <!-- feathered top edge of wash -->
-    <ellipse cx="80"  cy="230" rx="120" ry="40"  fill="#9EAF8E" opacity="0.06" transform="rotate(-12 80 230)"/>
+  <!-- Watercolor bg: soft pink blush top-right, matcha bottom-left -->
+  <svg class="wc" style="top:0;right:0;width:3in;height:3in;" viewBox="0 0 288 288" fill="none">
+    <ellipse cx="220" cy="50"  rx="130" ry="90"  fill="#F2C4CE" opacity="0.22" transform="rotate(20 220 50)"/>
+    <ellipse cx="250" cy="20"  rx="90"  ry="60"  fill="#F9E4A0" opacity="0.18" transform="rotate(15 250 20)"/>
+    <ellipse cx="200" cy="80"  rx="70"  ry="45"  fill="#F2C4CE" opacity="0.14" transform="rotate(10 200 80)"/>
   </svg>
-  <!-- Watercolor: small top-right accent -->
-  <svg class="wc" style="top:0;right:0;width:1.8in;height:1.4in;" viewBox="0 0 173 134" fill="none">
-    <ellipse cx="140" cy="20" rx="80" ry="40" fill="#9EAF8E" opacity="0.09" transform="rotate(20 140 20)"/>
-    <ellipse cx="160" cy="10" rx="55" ry="28" fill="#7D9170" opacity="0.07" transform="rotate(15 160 10)"/>
+  <svg class="wc" style="bottom:0;left:0;width:4in;height:3in;" viewBox="0 0 384 288" fill="none">
+    <ellipse cx="100" cy="240" rx="220" ry="95"  fill="#5C8A5C" opacity="0.11" transform="rotate(-16 100 240)"/>
+    <ellipse cx="60"  cy="255" rx="160" ry="68"  fill="#7AAD7A" opacity="0.09" transform="rotate(-10 60 255)"/>
+    <ellipse cx="28"  cy="268" rx="105" ry="48"  fill="#A8CCA8" opacity="0.10" transform="rotate(-5 28 268)"/>
+    <!-- cute little dots -->
+    <circle cx="320" cy="250" r="6" fill="#F2C4CE" opacity="0.35"/>
+    <circle cx="340" cy="265" r="4" fill="#F9E4A0" opacity="0.30"/>
+    <circle cx="305" cy="270" r="5" fill="#A8CCA8" opacity="0.30"/>
   </svg>
 
   <div class="logo">
@@ -320,131 +332,543 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
+
   <div class="content">
-  <div class="hed">
-    <div class="hed-en">Allergen Notice</div>
-    <div class="hed-zh">食物过敏须知</div>
-  </div>
+    <div class="hed">
+      <div class="hed-en">Allergen Notice</div>
+      <div class="hed-zh">食物过敏须知</div>
+    </div>
 
-  <p class="body-en">Please inform our staff of any food allergies before placing your order.</p>
-  <p class="body-zh">如有食物过敏，请在点餐前告知我们的员工。</p>
+    <p class="body-en">Please inform our staff of any food allergies before placing your order.</p>
+    <p class="body-zh">如有食物过敏，请在点餐前告知我们的员工。</p>
 
-  <div style="height:0.2in"></div>
+    <div style="height:0.18in"></div>
 
-  <div class="allergen-box">
-    <div class="abox-en">Our Products May Contain</div>
-    <div class="abox-zh">以下成分可能存在于我们的产品中</div>
-    <hr class="rule rule-zh" style="margin-bottom:0.13in;">
+    <div class="allergen-box">
+      <div class="abox-en">Our Products May Contain</div>
+      <div class="abox-zh">以下成分可能存在于我们的产品中</div>
+      <div style="border-top:1pt solid var(--matcha-pale);margin-bottom:0.12in;"></div>
 
-    <div class="allergen-grid">
-      <!-- Milk -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 10h14l4 10v20H13V20z"/>
-          <path d="M19 10Q19 6 24 6Q29 6 29 10"/>
-          <line x1="13" y1="22" x2="35" y2="22"/>
-          <ellipse cx="24" cy="32" rx="5.5" ry="6.5"/>
-        </svg>
-        <span class="ai-en">Milk</span><span class="ai-zh">牛奶</span>
-      </div>
-      <!-- Eggs -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="24" cy="29" rx="11" ry="14"/>
-          <ellipse cx="24" cy="19" rx="6.5" ry="8.5"/>
-        </svg>
-        <span class="ai-en">Eggs</span><span class="ai-zh">鸡蛋</span>
-      </div>
-      <!-- Wheat -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="24" y1="44" x2="24" y2="8"/>
-          <path d="M24 38Q17 34 17 27Q24 30 24 38Z"/>
-          <path d="M24 38Q31 34 31 27Q24 30 24 38Z"/>
-          <path d="M24 29Q17 25 17 18Q24 21 24 29Z"/>
-          <path d="M24 29Q31 25 31 18Q24 21 24 29Z"/>
-          <path d="M24 20Q19 16 21 8Q24 12 24 20Z"/>
-          <path d="M24 20Q29 16 27 8Q24 12 24 20Z"/>
-          <line x1="20" y1="44" x2="24" y2="38"/>
-          <line x1="28" y1="44" x2="24" y2="38"/>
-        </svg>
-        <span class="ai-en">Wheat</span><span class="ai-zh">小麦</span>
-      </div>
-      <!-- Soy -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="24" cy="24" r="13"/>
-          <ellipse cx="24" cy="24" rx="6" ry="10"/>
-          <ellipse cx="24" cy="24" rx="6" ry="10" transform="rotate(60 24 24)"/>
-          <ellipse cx="24" cy="24" rx="6" ry="10" transform="rotate(120 24 24)"/>
-        </svg>
-        <span class="ai-en">Soy</span><span class="ai-zh">大豆</span>
-      </div>
-      <!-- Peanuts -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="16" cy="34" rx="9" ry="7.5"/>
-          <ellipse cx="32" cy="18" rx="9" ry="7.5"/>
-          <path d="M21 29Q24 25 27 21" stroke-dasharray="2.2 2"/>
-        </svg>
-        <span class="ai-en">Peanuts</span><span class="ai-zh">花生</span>
-      </div>
-      <!-- Tree Nuts -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M24 7Q13 19 13 31Q13 43 24 43Q35 43 35 31Q35 19 24 7Z"/>
-          <line x1="24" y1="43" x2="24" y2="46"/>
-          <path d="M18 23Q24 27 30 23"/>
-        </svg>
-        <span class="ai-en">Tree Nuts</span><span class="ai-zh">坚果</span>
-      </div>
-      <!-- Sesame -->
-      <div class="allergen-item">
-        <svg class="ai-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="24" cy="31" rx="6.5" ry="10.5"/>
-          <line x1="24" y1="20" x2="24" y2="12"/>
-          <ellipse cx="17" cy="16" rx="3.5" ry="5.5" transform="rotate(-32 17 16)"/>
-          <ellipse cx="31" cy="16" rx="3.5" ry="5.5" transform="rotate(32 31 16)"/>
-        </svg>
-        <span class="ai-en">Sesame</span><span class="ai-zh">芝麻</span>
+      <div class="allergen-grid">
+
+        <!-- MILK: cute round milk bottle with blush cheeks -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="13" y="14" width="20" height="26" rx="6" fill="white" stroke="#5C8A5C" stroke-width="2"/>
+            <rect x="16" y="9"  width="14" height="8"  rx="4" fill="white" stroke="#5C8A5C" stroke-width="2"/>
+            <rect x="18" y="6"  width="10" height="5"  rx="2.5" fill="#A8CCA8"/>
+            <!-- milk fill -->
+            <rect x="15" y="28" width="16" height="10" rx="3" fill="#D4EAD4"/>
+            <!-- cheeks -->
+            <ellipse cx="17" cy="24" rx="3" ry="2" fill="#F2C4CE" opacity="0.7"/>
+            <ellipse cx="29" cy="24" rx="3" ry="2" fill="#F2C4CE" opacity="0.7"/>
+            <!-- eyes -->
+            <circle cx="20" cy="21" r="1.5" fill="#2B3A2B"/>
+            <circle cx="26" cy="21" r="1.5" fill="#2B3A2B"/>
+            <circle cx="20.6" cy="20.4" r="0.5" fill="white"/>
+            <circle cx="26.6" cy="20.4" r="0.5" fill="white"/>
+            <!-- smile -->
+            <path d="M20 24 Q23 26.5 26 24" stroke="#2B3A2B" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span class="ai-en">Milk</span><span class="ai-zh">牛奶</span>
+        </div>
+
+        <!-- EGGS: cute egg with face -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="23" cy="26" rx="13" ry="15" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="2"/>
+            <!-- cheeks -->
+            <ellipse cx="17" cy="27" rx="3" ry="2" fill="#F2C4CE" opacity="0.7"/>
+            <ellipse cx="29" cy="27" rx="3" ry="2" fill="#F2C4CE" opacity="0.7"/>
+            <!-- eyes -->
+            <circle cx="20" cy="24" r="1.5" fill="#2B3A2B"/>
+            <circle cx="26" cy="24" r="1.5" fill="#2B3A2B"/>
+            <circle cx="20.6" cy="23.4" r="0.5" fill="white"/>
+            <circle cx="26.6" cy="23.4" r="0.5" fill="white"/>
+            <!-- smile -->
+            <path d="M20 27.5 Q23 30 26 27.5" stroke="#2B3A2B" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span class="ai-en">Eggs</span><span class="ai-zh">鸡蛋</span>
+        </div>
+
+        <!-- WHEAT: chibi wheat with face on the grain head -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="23" y1="42" x2="23" y2="10" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+            <!-- wheat grains as cute ovals -->
+            <ellipse cx="17" cy="34" rx="5" ry="3.5" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.5" transform="rotate(-30 17 34)"/>
+            <ellipse cx="29" cy="34" rx="5" ry="3.5" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.5" transform="rotate(30 29 34)"/>
+            <ellipse cx="16" cy="26" rx="5" ry="3.5" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.5" transform="rotate(-25 16 26)"/>
+            <ellipse cx="30" cy="26" rx="5" ry="3.5" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.5" transform="rotate(25 30 26)"/>
+            <!-- top head with face -->
+            <ellipse cx="23" cy="14" rx="7" ry="6" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.5"/>
+            <circle cx="21" cy="13" r="1.2" fill="#2B3A2B"/>
+            <circle cx="25" cy="13" r="1.2" fill="#2B3A2B"/>
+            <path d="M21 15.5 Q23 17 25 15.5" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+            <!-- stem branches -->
+            <line x1="23" y1="42" x2="19" y2="45" stroke="#5C8A5C" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="23" y1="42" x2="27" y2="45" stroke="#5C8A5C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="ai-en">Wheat</span><span class="ai-zh">小麦</span>
+        </div>
+
+        <!-- SOY: cute round soybean pod -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="23" cy="25" rx="14" ry="11" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="2"/>
+            <!-- beans inside -->
+            <circle cx="16" cy="25" r="4" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2"/>
+            <circle cx="23" cy="23" r="4" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2"/>
+            <circle cx="30" cy="25" r="4" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2"/>
+            <!-- faces on middle bean -->
+            <circle cx="21.5" cy="22" r="1" fill="#2B3A2B"/>
+            <circle cx="24.5" cy="22" r="1" fill="#2B3A2B"/>
+            <path d="M21.5 24 Q23 25.5 24.5 24" stroke="#2B3A2B" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+            <!-- stem -->
+            <line x1="23" y1="14" x2="23" y2="9" stroke="#5C8A5C" stroke-width="1.8" stroke-linecap="round"/>
+            <ellipse cx="20" cy="11" rx="3.5" ry="2.5" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2" transform="rotate(-20 20 11)"/>
+            <ellipse cx="26" cy="11" rx="3.5" ry="2.5" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2" transform="rotate(20 26 11)"/>
+          </svg>
+          <span class="ai-en">Soy</span><span class="ai-zh">大豆</span>
+        </div>
+
+        <!-- PEANUTS: cute peanut shell with face -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23 8 C28 8 34 12 34 18 C34 22 31 24 31 24 C31 24 34 26 34 30 C34 38 28 40 23 40 C18 40 12 38 12 30 C12 26 15 24 15 24 C15 24 12 22 12 18 C12 12 18 8 23 8Z"
+                  fill="#F9E4A0" stroke="#5C8A5C" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="14" y1="24" x2="32" y2="24" stroke="#5C8A5C" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <!-- top face -->
+            <circle cx="20" cy="18" r="1.3" fill="#2B3A2B"/>
+            <circle cx="26" cy="18" r="1.3" fill="#2B3A2B"/>
+            <path d="M20 21 Q23 23 26 21" stroke="#2B3A2B" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+            <ellipse cx="18.5" cy="19" rx="2.5" ry="1.5" fill="#F2C4CE" opacity="0.6"/>
+            <ellipse cx="27.5" cy="19" rx="2.5" ry="1.5" fill="#F2C4CE" opacity="0.6"/>
+          </svg>
+          <span class="ai-en">Peanuts</span><span class="ai-zh">花生</span>
+        </div>
+
+        <!-- TREE NUTS: chibi acorn with face -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- nut body -->
+            <ellipse cx="23" cy="31" rx="11" ry="12" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="2"/>
+            <!-- cap -->
+            <ellipse cx="23" cy="19" rx="13" ry="5.5" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="2"/>
+            <!-- cap texture lines -->
+            <line x1="16" y1="17" x2="16" y2="23" stroke="#5C8A5C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            <line x1="20" y1="16" x2="20" y2="24" stroke="#5C8A5C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            <line x1="24" y1="15" x2="24" y2="24" stroke="#5C8A5C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            <line x1="28" y1="16" x2="28" y2="23" stroke="#5C8A5C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+            <!-- stem -->
+            <line x1="23" y1="14" x2="23" y2="9" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+            <!-- face -->
+            <ellipse cx="18.5" cy="31" rx="2.5" ry="1.8" fill="#F2C4CE" opacity="0.65"/>
+            <ellipse cx="27.5" cy="31" rx="2.5" ry="1.8" fill="#F2C4CE" opacity="0.65"/>
+            <circle cx="20.5" cy="29" r="1.3" fill="#2B3A2B"/>
+            <circle cx="25.5" cy="29" r="1.3" fill="#2B3A2B"/>
+            <path d="M20.5 32.5 Q23 34.5 25.5 32.5" stroke="#2B3A2B" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span class="ai-en">Tree Nuts</span><span class="ai-zh">坚果</span>
+        </div>
+
+        <!-- SESAME: cute sesame pod with seeds visible -->
+        <div class="allergen-item">
+          <svg class="ai-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- pod -->
+            <ellipse cx="23" cy="28" rx="9" ry="13" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="2"/>
+            <!-- seeds inside -->
+            <ellipse cx="21" cy="24" rx="2.8" ry="4" fill="white" stroke="#5C8A5C" stroke-width="1" transform="rotate(-10 21 24)"/>
+            <ellipse cx="27" cy="26" rx="2.8" ry="4" fill="white" stroke="#5C8A5C" stroke-width="1" transform="rotate(10 27 26)"/>
+            <ellipse cx="22" cy="33" rx="2.8" ry="4" fill="white" stroke="#5C8A5C" stroke-width="1" transform="rotate(-5 22 33)"/>
+            <!-- face on pod -->
+            <circle cx="20" cy="22" r="1.1" fill="#2B3A2B"/>
+            <circle cx="26" cy="22" r="1.1" fill="#2B3A2B"/>
+            <path d="M20 24.5 Q23 26.5 26 24.5" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+            <!-- stem + leaves -->
+            <line x1="23" y1="15" x2="23" y2="9" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="19" cy="13" rx="4" ry="2.5" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2" transform="rotate(-25 19 13)"/>
+            <ellipse cx="27" cy="13" rx="4" ry="2.5" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2" transform="rotate(25 27 13)"/>
+          </svg>
+          <span class="ai-en">Sesame</span><span class="ai-zh">芝麻</span>
+        </div>
+
       </div>
     </div>
+
+    <div style="height:0.14in"></div>
+    <p class="body-en" style="font-size:9.5pt;letter-spacing:0.14em;text-transform:uppercase;">Thank You for Your Understanding</p>
+    <p class="body-zh">感谢您的理解与配合</p>
   </div>
 
-  <div style="height:0.15in"></div>
-  <p class="body-en" style="font-size:9.5pt;letter-spacing:0.14em;text-transform:uppercase;">Thank You for Your Understanding</p>
-  <p class="body-zh">感谢您的理解与配合</p>
-
-  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <!-- Slightly imperfect ensō-style circle -->
-      <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
-            stroke="#6B7C5E" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <text x="28" y="36" font-family="'Noto Sans SC',sans-serif" font-size="22" fill="#6B7C5E" text-anchor="middle" font-weight="300" opacity="0.85">京</text>
+      <circle cx="28" cy="28" r="22" fill="var(--matcha-pale)" stroke="var(--matcha)" stroke-width="2"/>
+      <text x="28" y="36" font-family="'M PLUS Rounded 1c',sans-serif" font-size="22" fill="var(--matcha)" text-anchor="middle" font-weight="700">京</text>
     </svg>
   </div>
 </div>
 
 
-<!-- ══════════════════════════════════════════
-     SIGN 2 — HANDWASHING
-══════════════════════════════════════════ -->
+<!-- ══════════════════ SIGN 2 — HANDWASHING ══════════════════ -->
 <div class="sign">
 
-  <!-- Watercolor: top corners + bottom sweep -->
-  <svg class="wc" style="top:0;left:0;width:2.2in;height:1.8in;" viewBox="0 0 211 173" fill="none">
-    <ellipse cx="30" cy="25" rx="100" ry="50" fill="#9EAF8E" opacity="0.10" transform="rotate(-25 30 25)"/>
-    <ellipse cx="15" cy="10" rx="65" ry="32" fill="#7D9170" opacity="0.08" transform="rotate(-18 15 10)"/>
+  <svg class="wc" style="top:0;left:0;width:2.5in;height:2in;" viewBox="0 0 240 192" fill="none">
+    <ellipse cx="30" cy="30" rx="110" ry="55" fill="#C8E6F5" opacity="0.30" transform="rotate(-20 30 30)"/>
+    <ellipse cx="15" cy="10" rx="70"  ry="36" fill="#F2C4CE" opacity="0.22" transform="rotate(-14 15 10)"/>
+  </svg>
+  <svg class="wc" style="top:0;right:0;width:2.5in;height:2in;" viewBox="0 0 240 192" fill="none">
+    <ellipse cx="210" cy="30" rx="110" ry="55" fill="#F9E4A0" opacity="0.28" transform="rotate(20 210 30)"/>
+    <ellipse cx="225" cy="10" rx="70"  ry="36" fill="#A8CCA8" opacity="0.20" transform="rotate(14 225 10)"/>
+  </svg>
+  <svg class="wc" style="bottom:0;left:0;width:100%;height:2.5in;" viewBox="0 0 816 240" fill="none">
+    <ellipse cx="408" cy="220" rx="540" ry="90" fill="#7AAD7A" opacity="0.09"/>
+    <ellipse cx="300" cy="232" rx="380" ry="65" fill="#5C8A5C" opacity="0.08"/>
+    <circle cx="700" cy="200" r="8" fill="#F2C4CE" opacity="0.40"/>
+    <circle cx="720" cy="220" r="5" fill="#F9E4A0" opacity="0.35"/>
+    <circle cx="680" cy="225" r="6" fill="#C8E6F5" opacity="0.35"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="rule">
+
+  <div class="content">
+    <div class="hed" style="margin-bottom:0.08in;">
+      <div class="hed-en" style="font-size:18pt;line-height:1.2;font-weight:500;">Employees Must Wash Hands</div>
+      <div class="hed-zh">员工必须洗手</div>
+    </div>
+
+    <!-- Cute chibi hands illustration -->
+    <div style="margin:0.14in 0 0.16in;">
+      <svg width="200" height="130" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Soap bar — cute rectangle with face -->
+        <rect x="118" y="62" width="54" height="36" rx="10" fill="#C8E6F5" stroke="#5C8A5C" stroke-width="2"/>
+        <text x="145" y="76" font-family="sans-serif" font-size="9" fill="#5C8A5C" text-anchor="middle" font-weight="600">SOAP</text>
+        <ellipse cx="135" cy="82" rx="3" ry="2" fill="#F2C4CE" opacity="0.7"/>
+        <ellipse cx="155" cy="82" rx="3" ry="2" fill="#F2C4CE" opacity="0.7"/>
+        <!-- bubbles -->
+        <circle cx="108" cy="55" r="6" fill="white" stroke="#A8CCA8" stroke-width="1.5" opacity="0.85"/>
+        <circle cx="96"  cy="44" r="4" fill="white" stroke="#A8CCA8" stroke-width="1.5" opacity="0.75"/>
+        <circle cx="112" cy="42" r="5" fill="white" stroke="#A8CCA8" stroke-width="1.5" opacity="0.70"/>
+        <circle cx="98"  cy="58" r="3" fill="white" stroke="#A8CCA8" stroke-width="1.2" opacity="0.65"/>
+        <!-- bubble shine -->
+        <circle cx="106" cy="52" r="1.5" fill="white" opacity="0.9"/>
+        <circle cx="94"  cy="42" r="1"   fill="white" opacity="0.9"/>
+        <!-- Water drops -->
+        <ellipse cx="62" cy="18" rx="4.5" ry="7" fill="#C8E6F5" stroke="#5C8A5C" stroke-width="1.5" opacity="0.85"/>
+        <ellipse cx="76" cy="10" rx="3.5" ry="6" fill="#C8E6F5" stroke="#5C8A5C" stroke-width="1.5" opacity="0.75"/>
+        <ellipse cx="88" cy="16" rx="4"   ry="6.5" fill="#C8E6F5" stroke="#5C8A5C" stroke-width="1.5" opacity="0.70"/>
+        <!-- Left hand — chibi round fingers -->
+        <rect x="28" y="92" width="62" height="32" rx="14" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="2"/>
+        <!-- fingers -->
+        <rect x="32" y="72" width="12" height="26" rx="6" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+        <rect x="46" y="66" width="12" height="30" rx="6" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+        <rect x="60" y="68" width="12" height="28" rx="6" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+        <rect x="74" y="72" width="12" height="24" rx="6" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+        <!-- hand face -->
+        <ellipse cx="38" cy="103" rx="4" ry="3" fill="#F2C4CE" opacity="0.65"/>
+        <ellipse cx="68" cy="103" rx="4" ry="3" fill="#F2C4CE" opacity="0.65"/>
+        <circle cx="45" cy="100" r="2.2" fill="#2B3A2B"/>
+        <circle cx="58" cy="100" r="2.2" fill="#2B3A2B"/>
+        <path d="M45 105 Q51.5 109 58 105" stroke="#2B3A2B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+
+    <ul class="wash-list">
+      <li><span class="wi-en">Before Returning to Work</span><span class="wi-zh">返回工作前</span></li>
+      <li><span class="wi-en">After Using the Restroom</span><span class="wi-zh">如厕后</span></li>
+      <li><span class="wi-en">After Handling Food, Trash, or Raw Ingredients</span><span class="wi-zh">处理食物、垃圾或生食材后</span></li>
+      <li><span class="wi-en">After Any Activity That May Contaminate Hands</span><span class="wi-zh">任何可能污染双手的活动后</span></li>
+    </ul>
+  </div>
+
+  <div class="badge">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="22" fill="var(--matcha-pale)" stroke="var(--matcha)" stroke-width="2"/>
+      <text x="28" y="36" font-family="'M PLUS Rounded 1c',sans-serif" font-size="22" fill="var(--matcha)" text-anchor="middle" font-weight="700">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════ SIGN 3 — CHOKING FIRST AID ══════════════════ -->
+<div class="sign">
+
+  <svg class="wc" style="top:0;right:0;width:2in;height:1.8in;" viewBox="0 0 192 173" fill="none">
+    <ellipse cx="168" cy="24" rx="90" ry="48" fill="#F9E4A0" opacity="0.25" transform="rotate(22 168 24)"/>
+    <ellipse cx="185" cy="8"  rx="60" ry="30" fill="#F2C4CE" opacity="0.20" transform="rotate(16 185 8)"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="rule">
+
+  <div class="content">
+    <div class="hed" style="margin-bottom:0.05in;">
+      <div class="hed-en" style="font-size:21pt;">Choking First Aid</div>
+      <div class="hed-zh">噎食急救指南</div>
+    </div>
+
+    <!-- ADULTS -->
+    <div class="section-hed">Adults — 1 Year and Over</div>
+    <div class="section-zh">成人（1岁以上）</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- chibi person leaning forward -->
+          <circle cx="25" cy="10" r="7" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <ellipse cx="22" cy="10" rx="2.5" ry="1.8" fill="#F2C4CE" opacity="0.6"/>
+          <ellipse cx="28" cy="10" rx="2.5" ry="1.8" fill="#F2C4CE" opacity="0.6"/>
+          <circle cx="22.5" cy="9" r="1.2" fill="#2B3A2B"/>
+          <circle cx="27.5" cy="9" r="1.2" fill="#2B3A2B"/>
+          <path d="M22.5 12 Q25 14 27.5 12" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <rect x="18" y="17" width="14" height="18" rx="7" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.8"/>
+          <line x1="14" y1="48" x2="20" y2="35" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="48" x2="30" y2="35" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 22 L18 25" stroke="#5C8A5C" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <div class="step-en">Lean forward,<br>support chest</div>
+        <div class="step-zh">身体前倾</div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="25" cy="10" r="7" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="22.5" cy="9" r="1.2" fill="#2B3A2B"/>
+          <circle cx="27.5" cy="9" r="1.2" fill="#2B3A2B"/>
+          <path d="M22.5 12 Q25 14 27.5 12" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <rect x="18" y="17" width="14" height="18" rx="7" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.8"/>
+          <line x1="14" y1="48" x2="20" y2="35" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="48" x2="30" y2="35" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <!-- hand hitting back -->
+          <rect x="2" y="22" width="16" height="11" rx="5" fill="#F2C4CE" stroke="#5C8A5C" stroke-width="1.5"/>
+          <path d="M18 27.5 L22 27.5" stroke="#5C8A5C" stroke-width="2"/>
+        </svg>
+        <div class="step-en">Give 5<br>back blows</div>
+        <div class="step-zh">拍背5次</div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- victim -->
+          <circle cx="18" cy="9" r="6" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="16" cy="8" r="1" fill="#2B3A2B"/>
+          <circle cx="20" cy="8" r="1" fill="#2B3A2B"/>
+          <rect x="12" y="15" width="12" height="18" rx="6" fill="#D4EAD4" stroke="#5C8A5C" stroke-width="1.8"/>
+          <line x1="10" y1="46" x2="15" y2="33" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="26" y1="46" x2="21" y2="33" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <!-- helper arms wrapping -->
+          <path d="M28 28 Q24 22 28 18 Q34 16 38 20 Q42 24 38 30 L28 28Z" fill="#C8E6F5" stroke="#5C8A5C" stroke-width="1.5"/>
+          <!-- helper head -->
+          <circle cx="38" cy="12" r="5" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.5"/>
+          <circle cx="36.5" cy="11.5" r="1" fill="#2B3A2B"/>
+          <circle cx="39.5" cy="11.5" r="1" fill="#2B3A2B"/>
+        </svg>
+        <div class="step-en">Give 5 abdominal<br>thrusts</div>
+        <div class="step-zh">腹部冲击5次</div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- loop arrows in matcha green -->
+          <path d="M14 20 Q8 30 12 40 Q18 50 28 46 Q38 42 38 32 Q38 22 28 18" stroke="#5C8A5C" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M24 13 L28 18 L22 20" stroke="#5C8A5C" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="25" y="34" text-anchor="middle" font-family="'M PLUS Rounded 1c',sans-serif" font-size="7" fill="#5C8A5C" font-weight="700">REPEAT</text>
+        </svg>
+        <div class="step-en">Repeat until<br>object is out</div>
+        <div class="step-zh">重复直至异物排出</div>
+      </div>
+    </div>
+
+    <hr class="rule" style="width:100%;margin:0.09in 0;opacity:0.2;">
+
+    <!-- INFANTS -->
+    <div class="section-hed">Infants — Under 1 Year</div>
+    <div class="section-zh">婴儿（1岁以下）</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="28" width="34" height="14" rx="7" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="40" cy="20" r="8" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="37.5" cy="19" r="1.2" fill="#2B3A2B"/>
+          <circle cx="42.5" cy="19" r="1.2" fill="#2B3A2B"/>
+          <ellipse cx="36" cy="21" rx="2.2" ry="1.5" fill="#F2C4CE" opacity="0.65"/>
+          <ellipse cx="44" cy="21" rx="2.2" ry="1.5" fill="#F2C4CE" opacity="0.65"/>
+          <path d="M37.5 22.5 Q40 24.5 42.5 22.5" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <line x1="6"  y1="35" x2="2"  y2="50" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="44" y1="35" x2="48" y2="50" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="step-en">Support infant<br>face down</div>
+        <div class="step-zh">俯卧托抱婴儿</div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="28" width="34" height="14" rx="7" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="40" cy="20" r="8" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="37.5" cy="19" r="1.2" fill="#2B3A2B"/>
+          <circle cx="42.5" cy="19" r="1.2" fill="#2B3A2B"/>
+          <path d="M37.5 22.5 Q40 24.5 42.5 22.5" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <line x1="6"  y1="35" x2="2"  y2="50" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <line x1="44" y1="35" x2="48" y2="50" stroke="#5C8A5C" stroke-width="2" stroke-linecap="round"/>
+          <path d="M2 26 L10 32" stroke="#5C8A5C" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <div class="step-en">Give 5<br>back slaps</div>
+        <div class="step-zh">拍背5次</div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="28" width="38" height="16" rx="8" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="12" cy="19" r="8" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="1.8"/>
+          <circle cx="9.5"  cy="18" r="1.2" fill="#2B3A2B"/>
+          <circle cx="14.5" cy="18" r="1.2" fill="#2B3A2B"/>
+          <path d="M9.5 21 Q12 23 14.5 21" stroke="#2B3A2B" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <path d="M23 28 L23 22" stroke="#5C8A5C" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M29 28 L29 22" stroke="#5C8A5C" stroke-width="2.8" stroke-linecap="round"/>
+        </svg>
+        <div class="step-en">Give 5<br>chest thrusts</div>
+        <div class="step-zh">胸部推压5次</div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <svg width="50" height="52" viewBox="0 0 50 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- chibi phone -->
+          <rect x="15" y="8" width="20" height="36" rx="6" fill="#C8E6F5" stroke="#5C8A5C" stroke-width="2"/>
+          <rect x="18" y="12" width="14" height="20" rx="3" fill="white"/>
+          <circle cx="25" cy="38" r="2.5" fill="#A8CCA8" stroke="#5C8A5C" stroke-width="1.2"/>
+          <text x="25" y="26" text-anchor="middle" font-family="'M PLUS Rounded 1c',sans-serif" font-size="9" fill="#5C8A5C" font-weight="700">911</text>
+          <!-- signal waves -->
+          <path d="M38 16 Q42 20 38 24" stroke="#5C8A5C" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+          <path d="M40 13 Q46 20 40 27" stroke="#5C8A5C" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <div class="step-en">Call 911 if<br>unresponsive</div>
+        <div class="step-zh">无反应请拨打911</div>
+      </div>
+    </div>
+
+    <div class="emergency">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <div>
+        <div class="emg-en">Call 911 in an Emergency</div>
+        <div class="emg-zh">紧急情况请拨打911</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="badge">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="22" fill="var(--matcha-pale)" stroke="var(--matcha)" stroke-width="2"/>
+      <text x="28" y="36" font-family="'M PLUS Rounded 1c',sans-serif" font-size="22" fill="var(--matcha)" text-anchor="middle" font-weight="700">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════ SIGN 4 — WIFI ══════════════════ -->
+<div class="sign">
+
+  <!-- Dreamy centered wash -->
+  <svg class="wc" style="top:28%;left:50%;transform:translate(-50%,-50%);width:5.5in;height:5in;" viewBox="0 0 528 480" fill="none">
+    <ellipse cx="264" cy="240" rx="210" ry="165" fill="#C8E6F5" opacity="0.22"/>
+    <ellipse cx="240" cy="255" rx="155" ry="120" fill="#A8CCA8" opacity="0.16"/>
+    <ellipse cx="275" cy="220" rx="110" ry="90"  fill="#F9E4A0" opacity="0.12"/>
+  </svg>
+  <!-- Floating dots -->
+  <svg class="wc" style="top:10%;left:8%;width:1in;height:1in;" viewBox="0 0 96 96" fill="none">
+    <circle cx="20" cy="20" r="8" fill="#F2C4CE" opacity="0.45"/>
+    <circle cx="50" cy="10" r="5" fill="#F9E4A0" opacity="0.40"/>
+    <circle cx="75" cy="30" r="6" fill="#C8E6F5" opacity="0.40"/>
+  </svg>
+  <svg class="wc" style="top:10%;right:8%;width:1in;height:1in;" viewBox="0 0 96 96" fill="none">
+    <circle cx="76" cy="20" r="8" fill="#F9E4A0" opacity="0.45"/>
+    <circle cx="46" cy="10" r="5" fill="#F2C4CE" opacity="0.40"/>
+    <circle cx="21" cy="30" r="6" fill="#A8CCA8" opacity="0.40"/>
+  </svg>
+  <svg class="wc" style="bottom:0;left:0;width:3.5in;height:2in;" viewBox="0 0 336 192" fill="none">
+    <ellipse cx="80"  cy="175" rx="195" ry="82" fill="#7AAD7A" opacity="0.12" transform="rotate(-14 80 175)"/>
+    <ellipse cx="45"  cy="186" rx="140" ry="58" fill="#5C8A5C" opacity="0.09" transform="rotate(-8 45 186)"/>
+  </svg>
+
+  <div class="logo">
+    <span class="logo-kyo">KYO</span>
+    <span class="logo-matcha">MATCHA</span>
+  </div>
+  <hr class="rule">
+
+  <div class="content">
+    <div class="hed">
+      <div class="hed-en" style="font-size:18pt;font-weight:500;">WiFi</div>
+    </div>
+
+    <!-- Cute wifi character — signal arcs with a happy face -->
+    <div style="margin:0.2in 0 0.22in; position:relative; z-index:2;">
+      <svg width="160" height="145" viewBox="0 0 160 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- wifi arcs — thick rounded, in matcha colors -->
+        <path d="M18 62 Q80 8 142 62" stroke="#D4EAD4" stroke-width="18" stroke-linecap="round" fill="none"/>
+        <path d="M18 62 Q80 8 142 62" stroke="#5C8A5C" stroke-width="6"  stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M34 78 Q80 34 126 78" stroke="#D4EAD4" stroke-width="16" stroke-linecap="round" fill="none"/>
+        <path d="M34 78 Q80 34 126 78" stroke="#7AAD7A" stroke-width="5"  stroke-linecap="round" fill="none" opacity="0.7"/>
+        <path d="M52 94 Q80 64 108 94" stroke="#D4EAD4" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M52 94 Q80 64 108 94" stroke="#A8CCA8" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+        <path d="M66 109 Q80 94 94 109" stroke="#D4EAD4" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M66 109 Q80 94 94 109" stroke="#A8CCA8" stroke-width="4"  stroke-linecap="round" fill="none"/>
+        <!-- dot with cute face -->
+        <circle cx="80" cy="128" r="11" fill="#5C8A5C"/>
+        <circle cx="76" cy="126" r="1.8" fill="white"/>
+        <circle cx="84" cy="126" r="1.8" fill="white"/>
+        <path d="M76 130 Q80 133 84 130" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <!-- blush on dot -->
+        <ellipse cx="72" cy="129" rx="3" ry="2" fill="#F2C4CE" opacity="0.5"/>
+        <ellipse cx="88" cy="129" rx="3" ry="2" fill="#F2C4CE" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="wifi-info">
+      <div class="wifi-row">
+        <div class="wf-label">Network</div>
+        <div class="wf-value">KYO_MATCHA</div>
+      </div>
+      <div class="wifi-row">
+        <div class="wf-label">Password</div>
+        <div class="wf-value-pw">loveyousomatcha</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="badge">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="22" fill="var(--matcha-pale)" stroke="var(--matcha)" stroke-width="2"/>
+      <text x="28" y="36" font-family="'M PLUS Rounded 1c',sans-serif" font-size="22" fill="var(--matcha)" text-anchor="middle" font-weight="700">京</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════ SIGN 5 — HOURS ══════════════════ -->
+<div class="sign">
+
+  <!-- Big soft sweep bottom left -->
+  <svg class="wc" style="bottom:0;left:0;width:4.5in;height:3.2in;" viewBox="0 0 432 307" fill="none">
+    <ellipse cx="118" cy="268" rx="270" ry="112" fill="#7AAD7A" opacity="0.12" transform="rotate(-17 118 268)"/>
+    <ellipse cx="72"  cy="280" rx="200" ry="80"  fill="#5C8A5C" opacity="0.10" transform="rotate(-11 72 280)"/>
+    <ellipse cx="36"  cy="292" rx="135" ry="56"  fill="#A8CCA8" opacity="0.09" transform="rotate(-6 36 292)"/>
+    <circle cx="380" cy="275" r="10" fill="#F2C4CE" opacity="0.40"/>
+    <circle cx="398" cy="290" r="6"  fill="#F9E4A0" opacity="0.35"/>
+    <circle cx="365" cy="290" r="8"  fill="#C8E6F5" opacity="0.35"/>
   </svg>
   <svg class="wc" style="top:0;right:0;width:2.2in;height:1.8in;" viewBox="0 0 211 173" fill="none">
-    <ellipse cx="180" cy="25" rx="100" ry="50" fill="#9EAF8E" opacity="0.09" transform="rotate(25 180 25)"/>
-    <ellipse cx="200" cy="10" rx="65" ry="32" fill="#7D9170" opacity="0.07" transform="rotate(18 200 10)"/>
-  </svg>
-  <svg class="wc" style="bottom:0;left:0;width:100%;height:2.8in;" viewBox="0 0 816 269" fill="none">
-    <ellipse cx="408" cy="240" rx="540" ry="95" fill="#7D9170" opacity="0.10"/>
-    <ellipse cx="300" cy="255" rx="380" ry="68" fill="#6B7C5E" opacity="0.09"/>
-    <ellipse cx="500" cy="260" rx="280" ry="52" fill="#9EAF8E" opacity="0.07"/>
+    <ellipse cx="180" cy="25" rx="100" ry="50" fill="#F2C4CE" opacity="0.22" transform="rotate(22 180 25)"/>
+    <ellipse cx="200" cy="8"  rx="65"  ry="32" fill="#F9E4A0" opacity="0.20" transform="rotate(16 200 8)"/>
   </svg>
 
   <div class="logo">
@@ -452,314 +876,36 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
+
   <div class="content">
-  <div class="hed" style="margin-bottom:0.08in;">
-    <div class="hed-en" style="font-size:18pt;line-height:1.2;font-weight:500;">Employees Must Wash Hands</div>
-    <div class="hed-zh" style="margin-top:7px;">员工必须洗手</div>
+    <div class="hed">
+      <div class="hed-en" style="font-size:18pt;font-weight:500;">Hours</div>
+      <div class="hed-zh">营业时间</div>
+    </div>
+
+    <div class="hours-block">
+      <div class="hours-row">
+        <div class="hr-day-en">Sunday — Thursday</div>
+        <div class="hr-day-zh">周日至周四</div>
+        <div class="hr-time">11:30 AM – 10:00 PM</div>
+      </div>
+      <div class="hours-row">
+        <div class="hr-day-en">Friday — Saturday</div>
+        <div class="hr-day-zh">周五至周六</div>
+        <div class="hr-time">12:00 PM – 11:30 PM</div>
+      </div>
+    </div>
+
+    <div style="margin-top:0.32in; text-align:center;">
+      <div style="font-family:var(--fn-en);font-size:10.5pt;letter-spacing:0.24em;text-transform:uppercase;color:var(--matcha);">Thank You &nbsp;·&nbsp; See You Soon</div>
+      <div style="font-family:var(--fn-zh);font-size:8.5pt;color:var(--label);margin-top:6px;letter-spacing:0.06em;">感谢惠顾，期待您的再次光临</div>
+    </div>
   </div>
 
-  <!-- Hands illustration -->
-  <div style="margin:0.18in 0 0.08in; color:var(--matcha);">
-    <svg width="156" height="116" viewBox="0 0 156 116" fill="none" stroke="#6B7C5E" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M30 82Q26 60 29 42Q31 33 37 33Q41 33 42 40L43 54" stroke-width="1.9"/>
-      <path d="M43 54L43 36Q43 28 47 28Q51 28 51 36L51 51" stroke-width="1.9"/>
-      <path d="M51 51L51 34Q51 26 55 26Q59 26 59 34L59 49" stroke-width="1.9"/>
-      <path d="M59 49L59 38Q59 30 63 30Q67 30 67 38L67 60" stroke-width="1.9"/>
-      <path d="M30 82Q28 94 37 99Q50 106 72 99Q78 92 78 82L67 60" stroke-width="1.9"/>
-      <!-- water drops -->
-      <ellipse cx="96" cy="20" rx="3.8" ry="5.8" fill="#6B7C5E" opacity="0.30"/>
-      <ellipse cx="110" cy="11" rx="3.0" ry="4.8" fill="#6B7C5E" opacity="0.24"/>
-      <ellipse cx="122" cy="19" rx="3.4" ry="5.2" fill="#6B7C5E" opacity="0.20"/>
-      <path d="M88 38Q102 45 116 38" stroke-width="1.3" opacity="0.40"/>
-      <!-- soap -->
-      <rect x="104" y="60" width="36" height="26" rx="5" stroke-width="1.8"/>
-      <path d="M107 70Q122 64 138 70" stroke-width="1.1" opacity="0.45"/>
-      <!-- bubbles -->
-      <circle cx="92" cy="54" r="5" stroke-width="1.3" opacity="0.35"/>
-      <circle cx="82" cy="45" r="3.5" stroke-width="1.3" opacity="0.28"/>
-      <circle cx="96" cy="43" r="3" stroke-width="1.3" opacity="0.24"/>
-    </svg>
-  </div>
-
-  <ul class="wash-list">
-    <li><span class="wi-en">Before Returning to Work</span><span class="wi-zh">返回工作前</span></li>
-    <li><span class="wi-en">After Using the Restroom</span><span class="wi-zh">如厕后</span></li>
-    <li><span class="wi-en">After Handling Food, Trash, or Raw Ingredients</span><span class="wi-zh">处理食物、垃圾或生食材后</span></li>
-    <li><span class="wi-en">After Any Activity That May Contaminate Hands</span><span class="wi-zh">任何可能污染双手的活动后</span></li>
-  </ul>
-
-  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
-            stroke="#6B7C5E" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <text x="28" y="36" font-family="'Noto Sans SC',sans-serif" font-size="22" fill="#6B7C5E" text-anchor="middle" font-weight="300" opacity="0.85">京</text>
-    </svg>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════
-     SIGN 3 — CHOKING FIRST AID
-══════════════════════════════════════════ -->
-<div class="sign">
-
-  <svg class="wc" style="top:0;right:0;width:2in;height:1.6in;" viewBox="0 0 192 154" fill="none">
-    <ellipse cx="170" cy="20" rx="90" ry="44" fill="#9EAF8E" opacity="0.09" transform="rotate(22 170 20)"/>
-    <ellipse cx="185" cy="8"  rx="60" ry="28" fill="#7D9170" opacity="0.07" transform="rotate(16 185 8)"/>
-  </svg>
-
-  <div class="logo">
-    <span class="logo-kyo">KYO</span>
-    <span class="logo-matcha">MATCHA</span>
-  </div>
-  <hr class="rule">
-  <div class="content">
-  <div class="hed" style="margin-bottom:0.05in;">
-    <div class="hed-en" style="font-size:21pt;">Choking First Aid</div>
-    <div class="hed-zh">噎食急救指南</div>
-  </div>
-
-  <!-- Adults -->
-  <div class="section-hed">Adults — 1 Year and Over</div>
-  <div class="section-zh">成人（1岁以上）</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-n">1</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="21" cy="9" r="6"/>
-        <path d="M21 15Q15 22 15 31Q19 39 23 39"/>
-        <path d="M21 15Q27 20 29 28"/>
-        <path d="M15 31L9 50"/><path d="M29 28L35 50"/>
-        <path d="M6 23L14 27" stroke-width="2.2"/>
-      </svg>
-      <div class="step-en">Lean forward,<br>support chest</div>
-      <div class="step-zh">身体前倾</div>
-    </div>
-    <div class="step">
-      <div class="step-n">2</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="21" cy="9" r="6"/>
-        <path d="M21 15Q15 22 15 31"/><path d="M21 15Q27 20 29 28"/>
-        <path d="M15 31L9 50"/><path d="M29 28L35 50"/>
-        <rect x="1" y="23" width="14" height="9" rx="3" fill="#C8D5BC" stroke="#6B7C5E"/>
-        <path d="M15 28L19 28" stroke-width="2"/>
-      </svg>
-      <div class="step-en">Give 5<br>back blows</div>
-      <div class="step-zh">拍背5次</div>
-    </div>
-    <div class="step">
-      <div class="step-n">3</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="19" cy="9" r="5"/>
-        <path d="M19 14L19 38"/><path d="M13 48L19 38L25 48"/>
-        <path d="M13 22L27 22"/>
-        <circle cx="36" cy="11" r="4"/>
-        <path d="M29 36Q25 27 27 21Q31 16 36 14Q41 16 45 21Q47 27 43 36"/>
-        <path d="M26 30L29 26"/><path d="M46 30L43 26"/>
-      </svg>
-      <div class="step-en">Give 5 abdominal<br>thrusts</div>
-      <div class="step-zh">腹部冲击5次</div>
-    </div>
-    <div class="step">
-      <div class="step-n">4</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 20Q9 30 13 40Q19 50 30 46Q41 42 41 32Q41 22 30 18" fill="none"/>
-        <path d="M25 13L30 18L23 20" fill="none"/>
-        <text x="26" y="36" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#6B7C5E" stroke="none">REPEAT</text>
-      </svg>
-      <div class="step-en">Repeat until object<br>is out or help arrives</div>
-      <div class="step-zh">重复直至异物排出</div>
-    </div>
-  </div>
-
-  <hr class="rule" style="width:100%;margin:0.1in 0;opacity:0.15;">
-
-  <!-- Infants -->
-  <div class="section-hed">Infants — Under 1 Year</div>
-  <div class="section-zh">婴儿（1岁以下）</div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-n">1</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="30" width="30" height="12" rx="5"/>
-        <circle cx="37" cy="22" r="7"/>
-        <path d="M7 36L3 50"/><path d="M41 36L45 50"/>
-      </svg>
-      <div class="step-en">Support infant<br>face down</div>
-      <div class="step-zh">俯卧托抱婴儿</div>
-    </div>
-    <div class="step">
-      <div class="step-n">2</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="30" width="30" height="12" rx="5"/>
-        <circle cx="37" cy="22" r="7"/>
-        <path d="M7 36L3 50"/><path d="M41 36L45 50"/>
-        <path d="M3 26L11 31" stroke-width="2.2"/>
-      </svg>
-      <div class="step-en">Give 5<br>back slaps</div>
-      <div class="step-zh">拍背5次</div>
-    </div>
-    <div class="step">
-      <div class="step-n">3</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="7" y="30" width="32" height="14" rx="5"/>
-        <circle cx="13" cy="22" r="7"/>
-        <path d="M23 30L23 24" stroke-width="2.4"/><path d="M29 30L29 24" stroke-width="2.4"/>
-      </svg>
-      <div class="step-en">Give 5<br>chest thrusts</div>
-      <div class="step-zh">胸部推压5次</div>
-    </div>
-    <div class="step">
-      <div class="step-n">4</div>
-      <svg width="52" height="56" viewBox="0 0 52 56" fill="none" stroke="#6B7C5E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="15" y="12" width="22" height="36" rx="4"/>
-        <line x1="21" y1="42" x2="31" y2="42"/>
-        <text x="26" y="33" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#6B7C5E" stroke="none" font-weight="700">911</text>
-      </svg>
-      <div class="step-en">Call 911 if infant<br>becomes unresponsive</div>
-      <div class="step-zh">无反应请拨打911</div>
-    </div>
-  </div>
-
-  <div class="emergency">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-    </svg>
-    <div>
-      <div class="emg-en">Call 911 in an Emergency</div>
-      <div class="emg-zh">紧急情况请拨打911</div>
-    </div>
-  </div>
-
-  </div>
-  <div class="badge">
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
-            stroke="#6B7C5E" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <text x="28" y="36" font-family="'Noto Sans SC',sans-serif" font-size="22" fill="#6B7C5E" text-anchor="middle" font-weight="300" opacity="0.85">京</text>
-    </svg>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════
-     SIGN 4 — FREE WIFI
-══════════════════════════════════════════ -->
-<div class="sign">
-
-  <!-- Large organic watercolor behind wifi icon -->
-  <svg class="wc" style="top:30%;left:50%;transform:translate(-50%,-50%);width:5.5in;height:5in;" viewBox="0 0 528 480" fill="none">
-    <ellipse cx="264" cy="240" rx="220" ry="170" fill="#9EAF8E" opacity="0.13"/>
-    <ellipse cx="240" cy="255" rx="165" ry="125" fill="#7D9170" opacity="0.11"/>
-    <ellipse cx="275" cy="225" rx="120" ry="95"  fill="#6B7C5E" opacity="0.09"/>
-    <ellipse cx="255" cy="260" rx="85"  cy="70"  rx="85" ry="70" fill="#9EAF8E" opacity="0.07"/>
-  </svg>
-  <!-- Bottom-left sweep -->
-  <svg class="wc" style="bottom:0;left:0;width:3.5in;height:2.2in;" viewBox="0 0 336 211" fill="none">
-    <ellipse cx="80"  cy="185" rx="195" ry="85" fill="#7D9170" opacity="0.12" transform="rotate(-14 80 185)"/>
-    <ellipse cx="45"  cy="196" rx="140" ry="60" fill="#6B7C5E" opacity="0.10" transform="rotate(-8 45 196)"/>
-    <ellipse cx="20"  cy="205" rx="95"  ry="42" fill="#9EAF8E" opacity="0.09" transform="rotate(-4 20 205)"/>
-  </svg>
-
-  <div class="logo">
-    <span class="logo-kyo">KYO</span>
-    <span class="logo-matcha">MATCHA</span>
-  </div>
-  <hr class="rule">
-  <div class="content">
-  <div class="hed">
-    <div class="hed-en" style="font-size:18pt;font-weight:500;">WiFi</div>
-  </div>
-
-  <!-- WiFi icon — large, layered opacity arcs -->
-  <div style="margin:0.28in 0 0.1in; position:relative; z-index:2;">
-    <svg width="180" height="150" viewBox="0 0 180 150" fill="none" stroke="#6B7C5E" stroke-linecap="round">
-      <path d="M16 58Q90 2 164 58" stroke-width="13" opacity="0.18"/>
-      <path d="M32 76Q90 28 148 76" stroke-width="13" opacity="0.32"/>
-      <path d="M50 94Q90 58 130 94" stroke-width="13" opacity="0.52"/>
-      <path d="M68 111Q90 92 112 111" stroke-width="13" opacity="0.75"/>
-      <circle cx="90" cy="130" r="9" fill="#6B7C5E" stroke="none"/>
-    </svg>
-  </div>
-
-  <div class="wifi-info">
-    <div class="wifi-row">
-      <div class="wf-label">Network</div>
-      <div class="wf-value">KYO_MATCHA</div>
-    </div>
-    <div class="wifi-row">
-      <div class="wf-label">Password</div>
-      <div class="wf-value-pw">loveyousomatcha</div>
-    </div>
-  </div>
-
-  </div>
-  <div class="badge">
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
-            stroke="#6B7C5E" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <text x="28" y="36" font-family="'Noto Sans SC',sans-serif" font-size="22" fill="#6B7C5E" text-anchor="middle" font-weight="300" opacity="0.85">京</text>
-    </svg>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════
-     SIGN 5 — HOURS
-══════════════════════════════════════════ -->
-<div class="sign">
-
-  <!-- Bottom-left watercolor sweep — richest of all five -->
-  <svg class="wc" style="bottom:0;left:0;width:4.2in;height:3in;" viewBox="0 0 403 288" fill="none">
-    <ellipse cx="115" cy="255" rx="255" ry="105" fill="#7D9170" opacity="0.13" transform="rotate(-17 115 255)"/>
-    <ellipse cx="70"  cy="268" rx="190" ry="76"  fill="#6B7C5E" opacity="0.11" transform="rotate(-11 70 268)"/>
-    <ellipse cx="38"  cy="278" rx="130" ry="55"  fill="#9EAF8E" opacity="0.10" transform="rotate(-6 38 278)"/>
-    <ellipse cx="160" cy="280" rx="200" ry="60"  fill="#6B7C5E" opacity="0.07" transform="rotate(-20 160 280)"/>
-    <!-- feathered highlight -->
-    <ellipse cx="90"  cy="228" rx="140" ry="45"  fill="#C8D5BC" opacity="0.07" transform="rotate(-13 90 228)"/>
-  </svg>
-  <!-- Top-right accent -->
-  <svg class="wc" style="top:0;right:0;width:2in;height:1.5in;" viewBox="0 0 192 144" fill="none">
-    <ellipse cx="168" cy="22" rx="88" ry="42" fill="#9EAF8E" opacity="0.09" transform="rotate(20 168 22)"/>
-    <ellipse cx="185" cy="8"  rx="58" ry="26" fill="#7D9170" opacity="0.07" transform="rotate(14 185 8)"/>
-  </svg>
-
-  <div class="logo">
-    <span class="logo-kyo">KYO</span>
-    <span class="logo-matcha">MATCHA</span>
-  </div>
-  <hr class="rule">
-  <div class="content">
-  <div class="hed">
-    <div class="hed-en" style="font-size:18pt;font-weight:500;">Hours</div>
-    <div class="hed-zh">营业时间</div>
-  </div>
-
-  <div class="hours-block">
-    <div class="hours-row">
-      <div class="hr-day-en">Sunday — Thursday</div>
-      <div class="hr-day-zh">周日至周四</div>
-      <div class="hr-time">11:30 AM – 10:00 PM</div>
-    </div>
-    <div class="hours-row">
-      <div class="hr-day-en">Friday — Saturday</div>
-      <div class="hr-day-zh">周五至周六</div>
-      <div class="hr-time">12:00 PM – 11:30 PM</div>
-    </div>
-  </div>
-
-  <div style="margin-top:0.38in; text-align:center; position:relative; z-index:2;">
-    <div style="font-family:var(--fn-en);font-size:10.5pt;letter-spacing:0.24em;text-transform:uppercase;color:var(--matcha);">Thank You &nbsp;·&nbsp; See You Soon</div>
-    <div style="font-family:var(--fn-zh);font-size:8.5pt;color:var(--matcha-lt);margin-top:6px;letter-spacing:0.06em;line-height:1.9;">感谢惠顾，期待您的再次光临</div>
-  </div>
-
-  </div>
-  <div class="badge">
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
-            stroke="#6B7C5E" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <text x="28" y="36" font-family="'Noto Sans SC',sans-serif" font-size="22" fill="#6B7C5E" text-anchor="middle" font-weight="300" opacity="0.85">京</text>
+      <circle cx="28" cy="28" r="22" fill="var(--matcha-pale)" stroke="var(--matcha)" stroke-width="2"/>
+      <text x="28" y="36" font-family="'M PLUS Rounded 1c',sans-serif" font-size="22" fill="var(--matcha)" text-anchor="middle" font-weight="700">京</text>
     </svg>
   </div>
 </div>
