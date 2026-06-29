@@ -49,7 +49,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 0.68in 0.82in 0.65in;
   box-shadow: 0 6px 50px rgba(0,0,0,0.22);
 }
@@ -112,9 +112,19 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   line-height:1.75; text-align:center; letter-spacing:0.04em;
 }
 
+/* ── Middle content wrapper — vertically centered between logo and badge ── */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 /* ── 京 badge ─────────────────────────────────────── */
 .badge {
-  margin-top: 0.3in; padding-top: 0;
+  margin-top: auto; padding-top: 0.15in;
   display:flex; flex-direction:column;
   align-items:center; flex-shrink:0;
 }
@@ -289,7 +299,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
-
+  <div class="content">
   <div class="hed">
     <div class="hed-en">Allergen Notice</div>
     <div class="hed-zh">食物过敏须知</div>
@@ -384,6 +394,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
   <p class="body-en" style="font-size:9.5pt;letter-spacing:0.14em;text-transform:uppercase;">Thank You for Your Understanding</p>
   <p class="body-zh">感谢您的理解与配合</p>
 
+  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
       <!-- Slightly imperfect ensō-style circle -->
@@ -420,7 +431,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
-
+  <div class="content">
   <div class="hed" style="margin-bottom:0.08in;">
     <div class="hed-en" style="font-size:18pt;line-height:1.2;font-weight:500;">Employees Must Wash Hands</div>
     <div class="hed-zh" style="margin-top:7px;">员工必须洗手</div>
@@ -456,6 +467,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <li><span class="wi-en">After Any Activity That May Contaminate Hands</span><span class="wi-zh">任何可能污染双手的活动后</span></li>
   </ul>
 
+  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
       <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
@@ -481,7 +493,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
-
+  <div class="content">
   <div class="hed" style="margin-bottom:0.05in;">
     <div class="hed-en" style="font-size:21pt;">Choking First Aid</div>
     <div class="hed-zh">噎食急救指南</div>
@@ -599,6 +611,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     </div>
   </div>
 
+  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
       <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
@@ -633,7 +646,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
-
+  <div class="content">
   <div class="hed">
     <div class="hed-en" style="font-size:18pt;font-weight:500;">WiFi</div>
   </div>
@@ -660,6 +673,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     </div>
   </div>
 
+  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
       <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
@@ -695,7 +709,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <span class="logo-matcha">MATCHA</span>
   </div>
   <hr class="rule">
-
+  <div class="content">
   <div class="hed">
     <div class="hed-en" style="font-size:18pt;font-weight:500;">Hours</div>
     <div class="hed-zh">营业时间</div>
@@ -719,6 +733,7 @@ body { background:#C8BFB0; font-family:var(--fn-en); color:var(--ink); }
     <div style="font-family:var(--fn-zh);font-size:8.5pt;color:var(--matcha-lt);margin-top:6px;letter-spacing:0.06em;line-height:1.9;">感谢惠顾，期待您的再次光临</div>
   </div>
 
+  </div>
   <div class="badge">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
       <path d="M28 5 C43 5 51 14 51 28 C51 42 42 51 28 51 C14 51 5 42 5 28 C5 14 13 5 28 5"
