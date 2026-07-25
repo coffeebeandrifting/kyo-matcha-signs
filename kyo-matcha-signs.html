@@ -324,11 +324,25 @@ body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
   font-family:var(--fn-zh); font-size:7.5pt; color:var(--label);
   font-weight:400; letter-spacing:0.04em;
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SIGN 7 — RESTROOM FOR GUESTS ONLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.guest-note {
+  font-family:var(--fn-en); font-weight:400; font-size:14.5pt;
+  line-height:1.6; color:var(--content-ink); text-align:center;
+  max-width:5.4in; letter-spacing:0.02em;
+}
+.guest-note-zh {
+  font-family:var(--fn-zh); font-weight:400; font-size:8.5pt;
+  color:var(--label); margin-top:6px;
+  line-height:1.7; text-align:center; letter-spacing:0.04em;
+}
 </style>
 </head>
 <body>
 
-<div class="no-print">🍵 KYO MATCHA — 6 Print-Ready Signs · File → Print → Letter, Portrait, one per sheet</div>
+<div class="no-print">🍵 KYO MATCHA — 7 Print-Ready Signs · File → Print → Letter, Portrait, one per sheet</div>
 
 
 <!-- ══════════════════ SIGN 1 — ALLERGEN ══════════════════ -->
@@ -1026,6 +1040,64 @@ body { background:#B8D4B8; font-family:var(--fn-en); color:var(--ink); }
       <div style="font-family:var(--fn-en);font-style:italic;font-size:13pt;color:var(--matcha);">Thank you!</div>
       <div style="font-family:var(--fn-zh);font-size:8pt;color:var(--label);margin-top:4px;letter-spacing:0.04em;">感谢您的配合！</div>
     </div>
+  </div>
+
+  <div class="badge">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="22" fill="var(--matcha)" stroke="none"/>
+      <text x="28" y="36" font-family="'M PLUS Rounded 1c',sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="700">京</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ══════════════════ SIGN 7 — RESTROOM FOR GUESTS ONLY ══════════════════ -->
+<div class="sign">
+
+  <svg class="wc" style="top:0;right:0;width:2.6in;height:2.2in;" viewBox="0 0 250 211" fill="none">
+    <ellipse cx="230" cy="20" rx="120" ry="60" fill="#F9E4A0" opacity="0.24" transform="rotate(18 230 20)"/>
+    <ellipse cx="245" cy="0"  rx="80"  ry="40" fill="#F2C4CE" opacity="0.18" transform="rotate(12 245 0)"/>
+  </svg>
+  <svg class="wc" style="bottom:0;left:0;width:3in;height:2.4in;" viewBox="0 0 288 230" fill="none">
+    <ellipse cx="58"  cy="210" rx="180" ry="80" fill="#5C8A5C" opacity="0.10" transform="rotate(-14 58 210)"/>
+    <ellipse cx="28"  cy="220" rx="120" ry="55" fill="#7AAD7A" opacity="0.09" transform="rotate(-8 28 220)"/>
+    <circle cx="228" cy="200" r="6" fill="#C8E6F5" opacity="0.30"/>
+    <circle cx="208" cy="215" r="4" fill="#F2C4CE" opacity="0.28"/>
+  </svg>
+
+  <div class="content">
+    <div class="hed" style="margin-bottom:0.1in;">
+      <div class="hed-en" style="font-size:22pt;line-height:1.2;font-weight:400;">Restroom For Guests Only</div>
+      <div class="hed-zh">洗手间仅供顾客使用</div>
+    </div>
+
+    <!-- Cute chibi door + key illustration -->
+    <div style="margin:0.18in 0 0.18in;">
+      <svg width="120" height="130" viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- door frame -->
+        <rect x="26" y="14" width="68" height="98" rx="8" fill="#F9E4A0" stroke="#5C8A5C" stroke-width="2.5"/>
+        <!-- door panel -->
+        <rect x="34" y="22" width="52" height="82" rx="6" fill="#FDFAF3" stroke="#5C8A5C" stroke-width="2"/>
+        <!-- door knob -->
+        <circle cx="76" cy="64" r="4.5" fill="#5C8A5C"/>
+        <!-- kawaii face on door -->
+        <circle cx="50" cy="52" r="2.3" fill="#2B3A2B"/>
+        <circle cx="66" cy="52" r="2.3" fill="#2B3A2B"/>
+        <path d="M50 60 Q58 64 66 60" stroke="#2B3A2B" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <ellipse cx="45" cy="56" rx="3.6" ry="2.4" fill="#F2C4CE" opacity="0.6"/>
+        <ellipse cx="71" cy="56" rx="3.6" ry="2.4" fill="#F2C4CE" opacity="0.6"/>
+        <!-- little key hanging beside door -->
+        <circle cx="102" cy="60" r="9" fill="none" stroke="#5C8A5C" stroke-width="3"/>
+        <rect x="100" y="68" width="4" height="16" rx="1.5" fill="#5C8A5C"/>
+        <rect x="104" y="76" width="6" height="3" fill="#5C8A5C"/>
+        <rect x="104" y="82" width="5" height="3" fill="#5C8A5C"/>
+      </svg>
+    </div>
+
+    <div class="section-hed" style="margin-bottom:0.14in;">For Guests Only</div>
+    <div class="section-zh" style="margin-bottom:0.06in;">恕不对外开放</div>
+
+    <p class="guest-note">Please ask a staff member for the door code.<br>Thank you for your understanding!</p>
+    <p class="guest-note-zh">如需使用洗手间，请向工作人员索取门锁密码。感谢您的理解！</p>
   </div>
 
   <div class="badge">
